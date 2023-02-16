@@ -12,3 +12,20 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+
+.restaurant-tile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.restaurant-info {
+  padding: 10px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
