@@ -27,6 +27,7 @@ const RestaurantList = () => {
         )
     })
 
+    //3 column, big cards for styling
     return (
         <>
             <SearchCityForm setCity={setCity} />
