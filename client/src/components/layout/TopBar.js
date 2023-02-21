@@ -22,7 +22,7 @@ const TopBar = ({ user }) => {
 
   return (
     <div className="top-bar">
-      <div className="top-bar-left">
+      <div className="">
         <ul className="menu">
           <li className="menu-text">App</li>
           <li>
@@ -30,7 +30,7 @@ const TopBar = ({ user }) => {
           </li>
         </ul>
       </div>
-      <div className="top-bar-right">
+      <div className="">
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
       </div>
     </div>

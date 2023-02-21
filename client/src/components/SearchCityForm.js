@@ -28,6 +28,7 @@ const SearchCityForm = ({ setCity }) => {
               id="name"
               name="name"
               onChange={handleInputChange}
+              placeholder="New York City, NYC, 350 5th Ave, New York, NY 10118"
               value={searchedCity.name}
             />
             

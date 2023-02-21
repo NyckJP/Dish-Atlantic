@@ -7,11 +7,14 @@ import "../assets/scss/main.scss";
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
+import Footer from "./layout/Footer";
+import LandingPage from "./LandingPage";
 import RestaurantList from "./RestaurantList.js";
 import RestaurantShowPage from "./RestaurantShowPage.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
+  
   const fetchCurrentUser = async () => {
     try {
       const user = await getCurrentUser()
@@ -29,11 +32,7 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/">
-          <h2>Landing Page</h2>
-          <h4>Some info and links to stuff</h4>
-          <a href="/home">Home Index Page!</a>
-        </Route>
+        <Route exact path="/" component={LandingPage} />
         <Route exact path="/home" component={RestaurantList} />
         <Route 
           exact path="/restaurants/:id"  
@@ -42,6 +41,7 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
+      <Footer />
     </Router>
   );
 };
