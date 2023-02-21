@@ -26,13 +26,13 @@ const RestaurantShowPage = props => {
     //later, users can post thought about SPECIFIC MENU ITEMS
     //later later, a way to add to favorites or try laters
     return (
-        <>
+        <div className="show-page">
             <h1>{restaurant.name}</h1>
             <img src={restaurant.image_url}/>
             <h4>Rating: {restaurant.rating} (of {restaurant.review_count} reviews)</h4>
             <h4>Phone Number: {restaurant.display_phone}</h4>
             {/* <h4>Location: {restaurant.location.address1} - {restaurant.location.city}</h4> */}
-        </>
+        </div>
     )
 }
 

@@ -20,19 +20,32 @@ const RestaurantList = () => {
     useEffect(() => {
         getRestaurants()
     }, [city])
-
+    
+    //is open, business website (button), favorited
     const restaurantList = restaurants.map(business => {
         return (
             <RestaurantTile key={business.id} {...business}/>
-        )
-    })
-
-    //3 column, big cards for styling
+            )
+        })
+        
     return (
         <>
             <SearchCityForm setCity={setCity} />
-            <h2>Popular Restaurants in {city.name}</h2>
-            <ul>{restaurantList}</ul>
+
+            <div className="grid-container">
+                <div className="grid-margin-y align-center">
+                    <div className="cell">
+                        <h2 className="text-center">Popular Restaurants in {city.name}</h2>
+                    </div>
+                    <div className="grid-conatiner">
+                        <div className="grid-x center-items">
+                            <ul className="cell medium-9">
+                                {restaurantList}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
