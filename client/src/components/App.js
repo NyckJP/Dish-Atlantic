@@ -36,7 +36,7 @@ const App = (props) => {
         <Route exact path="/home" component={RestaurantList} />
         <Route 
           exact path="/restaurants/:id"  
-          render={props => <RestaurantShowPage {...props}/>} 
+          render={props => <RestaurantShowPage {...props} user={currentUser} />} 
         />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
