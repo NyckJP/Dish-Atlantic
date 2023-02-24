@@ -11,9 +11,8 @@ const RestaurantList = () => {
             const response = await fetch(`/api/v1/restaurants/${city.name}`)
             const parsedResponse = await response.json()
             setRestaurants(parsedResponse.businesses)
-            console.log(parsedResponse)
         } catch (error) {
-            console.log(`Error in List Fetch: ${error}`)
+            console.error(`Error in List Fetch: ${error}`)
         }
     }
 

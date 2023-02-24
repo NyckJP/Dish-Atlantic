@@ -1,5 +1,6 @@
 import express from "express"
 import YelpClient from "../../../apiClient/YelpClient.js"
+import Review from "../../../models/Review.js"
 
 const restaurantsRouter = new express.Router()
 
@@ -21,6 +22,7 @@ restaurantsRouter.get("/show/:id", async (req, res) => {
     try {
         const singleRestaurantData = await YelpClient.getRestaurant(id)
         const singleRestaurant = JSON.parse(singleRestaurantData.body)
+        singleRestaurant.reviews = await Review.query().where("restaurantId", "=", id)
         return res.status(200).json(singleRestaurant)
     } catch (error) {
         console.log(error)
