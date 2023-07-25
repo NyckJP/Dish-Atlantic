@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react"
 import RestaurantTile from "./RestaurantTile.js"
-import SearchCityForm from "./searchCityForm.js"
+import SearchCityForm from "./SearchCityForm.js"
 
-const RestaurantList = () => {
+const RestaurantList = (props) => {
     const [restaurants, setRestaurants] = useState([])
-    const [city, setCity] = useState({ name: "Boston" })
 
     const getRestaurants = async () => {
         try {
-            const response = await fetch(`/api/v1/restaurants/${city.name}`)
+            const response = await fetch(`/api/v1/restaurants/${props.city.name}`)
             const parsedResponse = await response.json()
             setRestaurants(parsedResponse.businesses)
         } catch (error) {
@@ -18,27 +17,26 @@ const RestaurantList = () => {
 
     useEffect(() => {
         getRestaurants()
-    }, [city])
+    }, [props.city])
     
     //is open, business website (button), favorited
     const restaurantList = restaurants.map(business => {
         return (
             <RestaurantTile key={business.id} {...business}/>
-            )
-        })
+        )
+    })
         
     return (
         <>
-            <SearchCityForm setCity={setCity} />
-
             <div className="grid-container">
-                <div className="grid-margin-y align-center">
+                <div className="grid-margin-y grid-x grid-margin-x center-items">
+                    <SearchCityForm setCity={props.setCity} />
                     <div className="cell">
-                        <h2 className="text-center">Popular Restaurants in {city.name}</h2>
+                        <h2 className="text-center">Popular Restaurants in {props.city.name}</h2>
                     </div>
-                    <div className="grid-conatiner">
+                    <div className="grid-container">
                         <div className="grid-x center-items">
-                            <ul className="cell medium-9">
+                            <ul className="cell medium-12">
                                 {restaurantList}
                             </ul>
                         </div>

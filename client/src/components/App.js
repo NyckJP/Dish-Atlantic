@@ -14,6 +14,7 @@ import RestaurantShowPage from "./RestaurantShowPage.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [city, setCity] = useState({ name: "Boston" })
   
   const fetchCurrentUser = async () => {
     try {
@@ -32,8 +33,14 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/home" component={RestaurantList} />
+      <Route 
+          exact path="/" 
+          render={() => <LandingPage setCity={setCity}/>} 
+        />
+        <Route 
+          exact path="/restaurants" 
+          render={() => <RestaurantList city={city} setCity={setCity}/>} 
+        />
         <Route 
           exact path="/restaurants/:id"  
           render={props => <RestaurantShowPage {...props} user={currentUser} />} 

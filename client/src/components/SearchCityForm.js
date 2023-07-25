@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const SearchCityForm = ({ setCity }) => {
+const SearchCityForm = (props) => {
     const [searchedCity, setSearchedCity] = useState({ name: ""})
 
     const clearSearchBar = () => {
@@ -13,25 +13,28 @@ const SearchCityForm = ({ setCity }) => {
 
     const handleSumbit = event => {
         event.preventDefault()
-        setCity(searchedCity)
+        props.setCity(searchedCity)
         clearSearchBar()
+        if(props.setShouldRedirect) {
+            props.setShouldRedirect(true)
+        }
     }
-
+    
     return (
-        <form onSubmit={handleSumbit}>
+        <form onSubmit={handleSumbit} className="callout cell search-city-container">
             <label htmlFor="name">
-                Search for your area:
+                Search for your area
             </label>
-            
+                
             <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={handleInputChange}
-              placeholder="New York City, NYC, 350 5th Ave, New York, NY 10118"
-              value={searchedCity.name}
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleInputChange}
+                placeholder="New York City, NYC, 350 5th Ave, New York, NY 10118"
+                value={searchedCity.name}
             />
-            
+                
             <button className="button" type="submit">Submit</button>
         </form>
     )
