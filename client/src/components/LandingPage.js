@@ -16,19 +16,33 @@ const LandingPage = (props) => {
     if(shouldRedirect) {
         return <Redirect push to= "/restaurants" />
     }
+
+    let personalGreeting
+    let logInOptions
+    if(!props.user) {
+        logInOptions = 
+            (
+                <>
+                    <h3 className="cell">Log in to add reviews of your own!</h3>
+                    <div className="cell log-in-options">
+                        <button className="button" onClick={signUp}>Sign Up</button>
+                        <button className="button" onClick={signIn}>Sign In</button>
+                    </div>
+                </>
+            )
+    } else {
+        personalGreeting = <h3 className="cell">Welcome, {props.user.userName}!</h3>
+    }
     
     return (
         <div className="grid-container text-center">
             <div className="grid-x grid-margin-x center-items">
                 <h2 className="title cell">App Name</h2>
+                {personalGreeting}
                 <h3 className="cell">Find restaurants with dishes you may like to try!</h3>
-                <a href="/restaurants" className="cell">Start Finding Places to Eat!</a>
+                <a href="/restaurants" className="cell">Find Places in Boston</a>
                 <SearchCityForm setCity={props.setCity} setShouldRedirect={setShouldRedirect}/>
-                <h3 className="cell">Log in to add reviews of your own!</h3>
-                <div className="cell log-in-options">
-                    <button className="button" onClick={signUp}>Sign Up</button>
-                    <button className="button" onClick={signIn}>Sign In</button>
-                </div>
+                {logInOptions}
             </div>
         </div>
     )

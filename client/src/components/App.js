@@ -35,7 +35,7 @@ const App = (props) => {
       <Switch>
       <Route 
           exact path="/" 
-          render={() => <LandingPage setCity={setCity}/>} 
+          render={() => <LandingPage setCity={setCity} user={currentUser}/>} 
         />
         <Route 
           exact path="/restaurants" 
