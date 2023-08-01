@@ -37,7 +37,7 @@ const LandingPage = (props) => {
     return (
         <div className="grid-container text-center">
             <div className="grid-x grid-margin-x center-items">
-                <h2 className="title cell">App Name</h2>
+                <h2 className="title cell">Dish Atlantic</h2>
                 {personalGreeting}
                 <h3 className="cell">Find restaurants with dishes you may like to try!</h3>
                 <a href="/restaurants" className="cell">Find Places in Boston</a>
