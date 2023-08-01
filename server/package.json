@@ -20,7 +20,7 @@
   "private": true,
   "type": "module",
   "version": "0.0.1",
-  "name": "Breakable-Toy-server",
+  "name": "Dish-Atlantic-server",
   "engines": {
     "node": "^16.18"
   },
