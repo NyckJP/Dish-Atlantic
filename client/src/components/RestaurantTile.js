@@ -8,7 +8,7 @@ const RestaurantTile = ({ name, location, display_phone, image_url, id }) => {
         <a href={`/restaurants/${id}`} className="callout restaurant-tile">
             <div className="tile-content grid-x ">
                 <div className="section restaurant-img">
-                    <img src={image_url} />
+                    <img src={image_url} className="tile-image"/>
                 </div>
                 <div className="section restaurant-info">
                     {name}<br/>

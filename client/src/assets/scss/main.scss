@@ -115,10 +115,24 @@ a {
   font-size: 22px;
 }
 
-img {
+.tile-image {
   width: 200px;
   height: 200px;
   border-radius: 20px;
+}
+
+.photo {
+  width: 15%;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
