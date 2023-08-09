@@ -1,11 +1,55 @@
-import React, { useState } from "react";
-import translateServerErrors from "../services/translateServerErrors";
+import React, { useState, useEffect } from "react"
+import translateServerErrors from "../services/translateServerErrors"
 import EditForm from "./EditForm.js"
 import ErrorList from "./layout/ErrorList"
 
-const ReviewTile = ({ id, dishName, content, isLiked, deleteReview, restaurant, setRestaurant, userId, user }) => {
+const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteReview, restaurant, setRestaurant, userId, user }) => {
+    const [author, setAuthor] = useState("")
     const [shouldRenderEditForm, setShouldRenderEditForm] = useState(false)
     const [errors, setErrors] = useState([])
+
+    const getAuthor = async () => {
+        try {
+            const response = await fetch(`/api/v1/users/${userId}`)
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw error
+            }
+            const parsedUser = await response.json()
+            setAuthor(parsedUser.user.userName)
+        } catch (err) {
+            console.error(`Error in fetch: ${err.message}`)
+        }
+    }
+
+    useEffect(() => {
+        getAuthor()
+    }, [])
+
+    const addHelpfulVote = async () => {
+        try {
+          const response = await fetch(`/api/v1/reviews/${id}/helpfulVotes`, {
+            method: "POST",
+            headers: new Headers({
+              "Content-Type": "application/json",
+            }),
+            body: JSON.stringify({ reviewId: id, userId: user.id }),
+          })
+          if (!response.ok) {
+            throw new Error(`${response.status} (${response.statusText})`)
+          } else {
+            const body = await response.json()
+            const newHelpfulVoteCount = body.newHelpfulVoteCount
+            const editedReviews = restaurant.reviews
+            const editedId = editedReviews.findIndex((review) => review.id === id)
+            editedReviews[editedId].helpfulVoteCount = newHelpfulVoteCount
+            setRestaurant({ ...restaurant, reviews: editedReviews })
+          }
+        } catch (error) {
+          console.error(`Error in vote fetch: ${error.message}`)
+        }
+      }
 
     const editReview = async(editData) => {
         try {
@@ -22,7 +66,7 @@ const ReviewTile = ({ id, dishName, content, isLiked, deleteReview, restaurant, 
                     const newErrors = translateServerErrors(parsedResponse.errors)
                     return setErrors(newErrors)
                 }
-                throw new Error(`${response.status} (${response.statusText})`);
+                throw new Error(`${response.status} (${response.statusText})`)
             }
             const parsedResponse = await response.json()
             const reviews = restaurant.reviews
@@ -35,14 +79,26 @@ const ReviewTile = ({ id, dishName, content, isLiked, deleteReview, restaurant, 
         }
     }
 
+    const handleHelpfulVote = event => {
+        event.preventDefault()
+        addHelpfulVote()
+    }
+
     const handleDelete = event => {
         event.preventDefault()
         deleteReview(id)        
     }
 
-    const handleEditClick = event => {
+    const handleEdit = event => {
         event.preventDefault()
         setShouldRenderEditForm(!shouldRenderEditForm)
+    }
+
+    let recommendation
+    if (recommended) {
+        recommendation = <h5>Would Recommend</h5>
+    } else {
+        recommendation = <h5>Wouldn't Recommend</h5>
     }
 
     let controls
@@ -50,15 +106,16 @@ const ReviewTile = ({ id, dishName, content, isLiked, deleteReview, restaurant, 
         controls = (
             <div className="button-group">
                 <input className="button" type="button" value="Delete" onClick={handleDelete} />
-                <input className="button" type="button" value="Edit" onClick={handleEditClick}/>
+                <input className="button" type="button" value="Edit" onClick={handleEdit}/>
             </div>
         )
     }
-    let form
+
+    let editForm
     if(shouldRenderEditForm){
-        form = (
+        editForm = (
             <>
-                <EditForm editReview={editReview} dishName={dishName} content={content} isLiked={isLiked}/>
+                <EditForm editReview={editReview} topic={topic} recommended={recommended} content={content} />
                 <ErrorList errors={errors}/>
             </>
         )
@@ -66,11 +123,13 @@ const ReviewTile = ({ id, dishName, content, isLiked, deleteReview, restaurant, 
     
     return (
         <div className="callout secondary">
-            <h3>Dish Name: {dishName}</h3>
-            <h5>Content: {content}</h5>
-            <h5>Liked: {isLiked.toString()}</h5>
+            <p>{author}</p>
+            <h3>{topic}</h3>
+            {recommendation}
+            <h5>{content}</h5>
+            <p><i className="fa-solid fa-handshake-angle" onClick={addHelpfulVote} /> {helpfulVoteCount} people found this helpful</p>
             {controls}
-            {form}
+            {editForm}
         </div>
     )
 }

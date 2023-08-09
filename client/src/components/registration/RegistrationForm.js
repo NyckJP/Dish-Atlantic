@@ -59,7 +59,6 @@ const RegistrationForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(userPayload)
     validateInput(userPayload);
     try {
       if (Object.keys(errors).length === 0) {

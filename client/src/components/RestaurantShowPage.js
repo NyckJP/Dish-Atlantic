@@ -9,6 +9,7 @@ const RestaurantShowPage = props => {
     const [restaurant, setRestaurant] = useState({reviews: []})
     const [shouldRenderForm, setShouldRenderForm] = useState(false)
     const [errors, setErrors] = useState([])
+    console.log(restaurant)
 
     const restaurantId = props.match.params.id
 
@@ -97,7 +98,12 @@ const RestaurantShowPage = props => {
     let form
     if (shouldRenderForm){
         if (props.user){
-            form = <NewDishReviewForm postReview={postReview} />
+            form = (
+                <>
+                    <ErrorList errors={errors} /> 
+                    <NewDishReviewForm postReview={postReview} />
+                </>
+            )
         } else {
             form = <Link to="/user-sessions/new">Sign In</Link>
         }
@@ -107,10 +113,10 @@ const RestaurantShowPage = props => {
         <div className="show-page">
             <h1>{restaurant.name}</h1>
             <img src={restaurant.image_url}/>
-            <h4>Rating: {restaurant.rating} (of {restaurant.review_count} reviews)</h4>
+            <h4>Rating: {restaurant.rating} (of {restaurant.review_count} Yelp reviews)</h4>
             <h4>Phone Number: {restaurant.display_phone}</h4>
+            <h4>Address: {restaurant.location.address1}</h4>
             <input className="button" type="button" value="LEAVE A REVIEW" onClick={handleFormRequest}/>
-            <ErrorList errors={errors} />
             {form}
             <div>{reviewList}</div>
         </div>

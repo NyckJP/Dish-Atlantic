@@ -19,7 +19,6 @@ const RestaurantList = (props) => {
         getRestaurants()
     }, [props.city])
     
-    //is open, business website (button), favorited
     const restaurantList = restaurants.map(business => {
         return (
             <RestaurantTile key={business.id} {...business}/>

@@ -8,17 +8,17 @@ class Review extends Model{
     static get jsonSchema() {
         return {
             type: "object",
-            required: ["dishName", "content", "isLiked"],
+            required: ["topic", "recommended", "content"],
             properties: {
-                dishName: { type: "string", minLength: 1 },
-                content: { type: "string", minLength: 1 },
-                isLiked: { type: ["boolean", "string"] }
+                topic: { type: "string", minLength: 1 },
+                recommended: { type: ["boolean", "string"] },
+                content: { type: "string", minLength: 1 }
             }
         }
     }
 
     static get relationMappings() {
-        const { User } = require("./index.js")
+        const { User, HelpfulVote } = require("./index.js")
         return {
             user: {
                 relation: Model.BelongsToOneRelation,
@@ -26,6 +26,14 @@ class Review extends Model{
                 join: {
                     from: "reviews.userId",
                     to: "users.id"
+                }
+            },
+            helpfulVotes: {
+                relation: Model.HasManyRelation,
+                modelClass: HelpfulVote,
+                join: {
+                    from: "reviews.id",
+                    to: "helpfulVotes.reviewId"
                 }
             }
         }
