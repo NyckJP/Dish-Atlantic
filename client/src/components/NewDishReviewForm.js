@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const NewDishReviewForm = ({ postReview }) => {
     const [newReview, setNewReview] = useState({
-        dishName: "",
-        content: "",
-        isLiked: ""
+        topic: "",
+        recommended: "",
+        content: ""
     })
 
     const handleInputChange = event => {
@@ -22,13 +22,21 @@ const NewDishReviewForm = ({ postReview }) => {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Name of Dish:
+                Topic:
                 <input 
                     type="text" 
-                    name="dishName" 
+                    name="topic" 
                     onChange={handleInputChange}
-                    value={newReview.dishName}
+                    value={newReview.topic}
                 />
+            </label>
+
+            <label>
+                Would you recommend?: <br/>
+                <input type="radio" id="yes" name="recommended" value={true} onChange={handleInputChange} />
+                <label htmlFor="yes">YES</label>
+                <input type="radio" id="no" name="recommended" value={false} onChange={handleInputChange} />
+                <label htmlFor="no">NO</label>
             </label>
 
             <label>
@@ -39,14 +47,6 @@ const NewDishReviewForm = ({ postReview }) => {
                     onChange={handleInputChange}
                     value={newReview.content}
                 />
-            </label>
-
-            <label>
-                Do you like this dish?: <br/>
-                <input type="radio" id="yes" name="isLiked" value={true} onChange={handleInputChange} />
-                <label htmlFor="yes">YES</label>
-                <input type="radio" id="no" name="isLiked" value={false} onChange={handleInputChange} />
-                <label htmlFor="no">NO</label>
             </label>
             
             <input className="button" type="submit" value="Submit" />

@@ -1,8 +1,12 @@
 import React from "react"
 
-const RestaurantTile = ({ name, location, display_phone, image_url, id }) => {
-    //add categories filter
-    //instead of phone number, have # of comments, favorite functionality, and whether its open
+const RestaurantTile = ({ name, location, image_url, id, is_closed }) => {
+    let openStatus
+    if (!is_closed) {
+        openStatus = 'Currently Open'
+    } else {
+        openStatus = 'Currently Closed'
+    }
 
     return (
         <a href={`/restaurants/${id}`} className="callout restaurant-tile">
@@ -13,11 +17,8 @@ const RestaurantTile = ({ name, location, display_phone, image_url, id }) => {
                 <div className="section restaurant-info">
                     {name}<br/>
                     {location.address1}<br/>
-                     {display_phone}{/*DO NOT NEED NUMBER HERE */}
+                    {openStatus}
                 </div>
-                {/* <div className="section restaurant-status">
-                    Status Placeholder
-                </div> */}
             </div>
         </a>
     )
