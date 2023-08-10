@@ -115,7 +115,7 @@ const RestaurantShowPage = props => {
             <img src={restaurant.image_url}/>
             <h4>Rating: {restaurant.rating} (of {restaurant.review_count} Yelp reviews)</h4>
             <h4>Phone Number: {restaurant.display_phone}</h4>
-            <h4>Address: {restaurant.location.address1}</h4>
+            <h4>Address: {restaurant.location?.address1}</h4>
             <input className="button" type="button" value="LEAVE A REVIEW" onClick={handleFormRequest}/>
             {form}
             <div>{reviewList}</div>
