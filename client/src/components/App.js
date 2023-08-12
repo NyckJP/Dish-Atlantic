@@ -11,6 +11,7 @@ import Footer from "./layout/Footer";
 import LandingPage from "./LandingPage";
 import RestaurantList from "./RestaurantList.js";
 import RestaurantShowPage from "./RestaurantShowPage.js";
+import SavedPage from "./SavedPage";
 import AboutMePage from "./AboutMePage.js";
 
 const App = (props) => {
@@ -46,6 +47,7 @@ const App = (props) => {
           exact path="/restaurants/:id"  
           render={props => <RestaurantShowPage {...props} user={currentUser} />} 
         />
+        <Route exact path="/saved" component={SavedPage} />
         <Route exact path="/about" component={AboutMePage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
