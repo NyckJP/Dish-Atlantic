@@ -21,11 +21,10 @@ const sleep = async () => {
 
 const findCache = async (savedIds) => {
     let cacheList = []
-    // let counter = 0
 
     for(let i = 0; i < savedIds.length; i++){
         const existingCache = await CachedRestaurant.query().findOne("restaurantId", "=", savedIds[i].restaurantId)
-        if(isVerified(existingCache)) {
+        if(!isVerified(existingCache)) {
             const singleRestaurantData = await YelpClient.getRestaurant(savedIds[i].restaurantId)
             const singleRestaurant = JSON.parse(singleRestaurantData.body)
             const newCache = {

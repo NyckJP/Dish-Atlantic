@@ -9,7 +9,6 @@ const SavedPage = () => {
         try {
             const response = await fetch("/api/v1/savedIds")
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
             setFavorites(parsedResponse.favorites)
             setTryLaters(parsedResponse.tryLaters)
         } catch (error) {
@@ -33,15 +32,15 @@ const SavedPage = () => {
             />
         )
     })
-    const tryLatersList = tryLaters.map(favorite => {
+    const tryLatersList = tryLaters.map(tryLater => {
         return (
             <RestaurantTile 
-                key={favorite.id} 
-                name={favorite.name}
-                location={{ address1: favorite.address }}
-                image_url={favorite.imageUrl}
-                id={favorite.restaurantId}
-                is_closed={!favorite.isOpen}
+                key={tryLater.id} 
+                name={tryLater.name}
+                location={{ address1: tryLater.address }}
+                image_url={tryLater.imageUrl}
+                id={tryLater.restaurantId}
+                is_closed={!tryLater.isOpen}
             />
         )
     })
