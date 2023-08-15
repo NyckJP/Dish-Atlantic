@@ -12,7 +12,7 @@ exports.up = async (knex) => {
         table.string("imageUrl")
         table.string("name").notNullable()
         table.string("address")
-        table.boolean("isOpen")
+        table.string("city")
         table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
         table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
     })

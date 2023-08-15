@@ -28,7 +28,7 @@ const SavedPage = () => {
                 location={{ address1: favorite.address }}
                 image_url={favorite.imageUrl}
                 id={favorite.restaurantId}
-                is_closed={!favorite.isOpen}
+                city={favorite.city}
             />
         )
     })
@@ -40,7 +40,7 @@ const SavedPage = () => {
                 location={{ address1: tryLater.address }}
                 image_url={tryLater.imageUrl}
                 id={tryLater.restaurantId}
-                is_closed={!tryLater.isOpen}
+                city={tryLater.city}
             />
         )
     })

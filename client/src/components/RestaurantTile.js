@@ -1,9 +1,6 @@
 import React from "react"
 
-const RestaurantTile = ({ name, location, image_url, id, is_closed }) => {
-    //favorited state thats true/false
-    //toggle when post favorite
-
+const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
     const saveId = async ( saveAs ) => {
         try {
             const response = await fetch("/api/v1/savedIds", {
@@ -24,10 +21,12 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed }) => {
     }
     
     let openStatus
-    if (!is_closed) {
-        openStatus = 'Currently Open'
-    } else {
-        openStatus = 'Currently Closed'
+    if(is_closed != null){
+        if (!is_closed) {
+            openStatus = 'Currently Open'
+        } else {
+            openStatus = 'Currently Closed'
+        }
     }
 
     return (
@@ -40,6 +39,7 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed }) => {
                     <div className="section restaurant-info">
                         {name}<br/>
                         {location.address1}<br/>
+                        {city}
                         {openStatus}
                     </div>
                 </div>

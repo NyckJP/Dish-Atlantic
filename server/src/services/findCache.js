@@ -15,16 +15,15 @@ const isVerified = (existingCache) => {
     return true    
 }
 
-const sleep = async () => {
-    return new Promise(resolve => setTimeout(resolve, 1000))
-}
-
 const findCache = async (savedIds) => {
     let cacheList = []
 
     for(let i = 0; i < savedIds.length; i++){
         const existingCache = await CachedRestaurant.query().findOne("restaurantId", "=", savedIds[i].restaurantId)
         if(!isVerified(existingCache)) {
+            if(existingCache) {
+                await CachedRestaurant.query().findOne("restaurantId", "=", savedIds[i].restaurantId).delete()
+            }
             const singleRestaurantData = await YelpClient.getRestaurant(savedIds[i].restaurantId)
             const singleRestaurant = JSON.parse(singleRestaurantData.body)
             const newCache = {
@@ -32,7 +31,7 @@ const findCache = async (savedIds) => {
                 imageUrl: singleRestaurant.image_url,
                 name: singleRestaurant.name,
                 address: singleRestaurant.location.address1,
-                isOpen: !singleRestaurant.is_closed
+                city: singleRestaurant.location.city
             }
             const newCacheEntry = await CachedRestaurant.query().insertAndFetch(newCache)
             cacheList.push(newCacheEntry)
