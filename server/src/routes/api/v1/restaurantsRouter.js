@@ -7,6 +7,7 @@ const restaurantsRouter = new express.Router()
 
 restaurantsRouter.get("/:city", async (req, res) => {
     const { city } = req.params
+
     try {
         const restaurantData = await YelpClient.getRestaurants(city)
         const restaurants = JSON.parse(restaurantData.body)
