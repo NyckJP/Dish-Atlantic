@@ -50,6 +50,18 @@ reviewsRouter.patch("/:id", async (req, res) => {
     }
 })
 
+reviewsRouter.get("/:id/reviewCount", async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const reviews = await Review.query().where("restaurantId", "=", id)
+        const reviewCount = reviews.length
+        return res.status(200).json({ reviewCount: reviewCount })
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
 reviewsRouter.use("/:id/helpfulVotes", reviewsHelpfulVotesRouter)
 
 export default reviewsRouter
