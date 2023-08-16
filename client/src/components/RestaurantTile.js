@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react"
 const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
     const [favorited, setFavorited] = useState(false)
     const [savedForLater, setSavedForLater] = useState(false)
-
+    const [reviewCount, setReviewCount] = useState(0)
+    
     const getSavedIds = async () => {
         try {
             const response = await fetch("/api/v1/savedIds/ids")
@@ -22,6 +23,16 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
         }
     }
     
+    const getReviewCount = async () => {
+        try {
+            const response = await fetch(`/api/v1/reviews/${id}/reviewCount`)
+            const parsedResponse = await response.json()
+            setReviewCount(parsedResponse.reviewCount)
+        } catch (error) {
+            console.error(`Error in review count fetch: ${error.message}`)
+        }
+    }
+    
     const saveId = async ( saveAs ) => {
         try {
             const response = await fetch("/api/v1/savedIds", {
@@ -36,6 +47,7 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
     
     useEffect(() => {
         getSavedIds()
+        getReviewCount()
     }, [])
 
     const handleFavoriteClick = () => {
@@ -86,6 +98,7 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
             </a>
             {favoriteButton}
             {tryLaterButton}
+            {reviewCount} reviews
         </>
     )
 }

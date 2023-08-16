@@ -36,7 +36,6 @@ savedIdsRouter.get("/ids", async (req, res) => {
     try {
         const currentUser = await User.query().findById(userId)
         const savedIds = await currentUser.$relatedQuery("savedIds")
-        console.log(savedIds)
         return res.status(200).json({ savedIds: savedIds })
     } catch (error) {
         console.log(error)
