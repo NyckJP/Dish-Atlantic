@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import RestaurantTile from "./RestaurantTile"
+import RestaurantTile from "./RestaurantTile.js"
 
 const SavedPage = () => {
     const [favorites, setFavorites] = useState([])
@@ -7,7 +7,7 @@ const SavedPage = () => {
 
     const getSavedRestaurants = async () => {
         try {
-            const response = await fetch("/api/v1/savedIds")
+            const response = await fetch("/api/v1/savedIds/restaurants")
             const parsedResponse = await response.json()
             setFavorites(parsedResponse.favorites)
             setTryLaters(parsedResponse.tryLaters)

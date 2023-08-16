@@ -30,7 +30,21 @@ savedIdsRouter.post("/", async (req, res) => {
     }
 })
 
-savedIdsRouter.get("/", async (req, res) => {
+savedIdsRouter.get("/ids", async (req, res) => {
+    const userId = req.user.id
+
+    try {
+        const currentUser = await User.query().findById(userId)
+        const savedIds = await currentUser.$relatedQuery("savedIds")
+        console.log(savedIds)
+        return res.status(200).json({ savedIds: savedIds })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ errors: error })
+    }
+})
+
+savedIdsRouter.get("/restaurants", async (req, res) => {
     const userId = req.user.id
 
     try {

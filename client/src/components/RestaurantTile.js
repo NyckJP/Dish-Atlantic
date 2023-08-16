@@ -1,6 +1,27 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
+    const [favorited, setFavorited] = useState(false)
+    const [savedForLater, setSavedForLater] = useState(false)
+
+    const getSavedIds = async () => {
+        try {
+            const response = await fetch("/api/v1/savedIds/ids")
+            const parsedResponse = await response.json()
+            parsedResponse.savedIds.forEach(element => {
+                if(element.restaurantId === id) {
+                    if(element.savedAs === "FAVORITE") {
+                        setFavorited(true)
+                    } else {
+                        setSavedForLater(true)
+                    }
+                }
+            })
+        } catch (error) {
+            console.error(`Error in favorite fetch: ${error.message}`)
+        }
+    }
+    
     const saveId = async ( saveAs ) => {
         try {
             const response = await fetch("/api/v1/savedIds", {
@@ -12,12 +33,18 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
             console.error(`Error in favorite fetch: ${error.message}`)
         }
     }
+    
+    useEffect(() => {
+        getSavedIds()
+    }, [])
 
     const handleFavoriteClick = () => {
         saveId("FAVORITE")
+        setFavorited(!favorited)
     }
     const handleTryLaterClick = () => {
         saveId("TRY LATER")
+        setSavedForLater(!savedForLater)
     }
     
     let openStatus
@@ -27,6 +54,19 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
         } else {
             openStatus = 'Currently Closed'
         }
+    }
+
+    let favoriteButton
+    let tryLaterButton
+    if(favorited) {
+        favoriteButton = <input className="button" type="button" value="Favorited" onClick={handleFavoriteClick}/>
+    } else {
+        favoriteButton = <input className="button" type="button" value="Favorite" onClick={handleFavoriteClick}/>
+    }
+    if(savedForLater) {
+        tryLaterButton = <input className="button" type="button" value="Saved for Later" onClick={handleTryLaterClick}/>
+    } else {
+        tryLaterButton = <input className="button" type="button" value="Try Later" onClick={handleTryLaterClick}/>
     }
 
     return (
@@ -44,8 +84,8 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
                     </div>
                 </div>
             </a>
-            <input className="button" type="button" value="Favorite" onClick={handleFavoriteClick}/>
-            <input className="button" type="button" value="Try Later" onClick={handleTryLaterClick}/>
+            {favoriteButton}
+            {tryLaterButton}
         </>
     )
 }
