@@ -15,9 +15,12 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
+    <li key="username">
+      {user?.userName}
+    </li>,
     <li key="sign-out">
       <SignOutButton />
-    </li>,
+    </li>
   ];
 
   return (
@@ -26,7 +29,16 @@ const TopBar = ({ user }) => {
         <ul className="menu">
           <li className="menu-text">Dish Atlantic</li>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/"><i className="fa-solid fa-house" /> Home</Link>
+          </li>
+          <li>
+            <Link to="/restaurants"><i className="fa-solid fa-utensils" /> Restaurants</Link>
+          </li>
+          <li>
+            <Link to="/saved"><i className="fa-solid fa-clock" /> Saved</Link>
+          </li>
+          <li>
+            <Link to="/about">About Me</Link>
           </li>
         </ul>
       </div>
