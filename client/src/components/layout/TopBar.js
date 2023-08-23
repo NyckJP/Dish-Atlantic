@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Menu } from "@headlessui/react"
 import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
@@ -15,34 +16,45 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
-    <li key="username">
-      {user?.userName}
+    <li key="username" className="username">
+      Signed In as {user?.userName}
     </li>,
     <li key="sign-out">
       <SignOutButton />
     </li>
   ];
 
+  const menuItems = [
+    <Menu.Items className="menu-list">
+      <Menu.Item><Link to="/"><i className="fa-solid fa-house" /> Home</Link></Menu.Item>
+      <Menu.Item><Link to="/restaurants"><i className="fa-solid fa-utensils" /> Restaurants</Link></Menu.Item>
+      <Menu.Item><Link to="/saved"><i className="fa-solid fa-clock" /> Saved</Link></Menu.Item>
+      <Menu.Item><Link to="/about">About Me</Link></Menu.Item>
+    </Menu.Items>
+  ]
+
   return (
     <div className="top-bar">
-      <div className="">
+      <Menu>
         <ul className="menu">
+          <Menu.Button className="menu-button"><i className="fa-solid fa-bars" /></Menu.Button>
+          {menuItems}
           <li className="menu-text">Dish Atlantic</li>
-          <li>
+          <li className="menu-item">
             <Link to="/"><i className="fa-solid fa-house" /> Home</Link>
           </li>
-          <li>
+          <li className="menu-item"> 
             <Link to="/restaurants"><i className="fa-solid fa-utensils" /> Restaurants</Link>
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/saved"><i className="fa-solid fa-clock" /> Saved</Link>
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/about">About Me</Link>
           </li>
         </ul>
-      </div>
-      <div className="">
+      </Menu>
+      <div>
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
       </div>
     </div>

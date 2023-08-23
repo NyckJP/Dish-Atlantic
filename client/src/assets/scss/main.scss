@@ -22,6 +22,10 @@
   background-image: linear-gradient(#4fb8d2, #d8edf0);
 }
 
+.username {
+  padding: .35rem 1rem;
+}
+
 .button {
   background-color: #00a6fb;
   border-radius: 20px;
@@ -143,4 +147,24 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.menu-list {
+  position: absolute;
+  background-color: white;
+  border-radius: .375rem;
+  margin-top: 35px;
+  z-index: 10;
+}
+
+@media (min-width: 846px) {
+  .menu-button {
+    display: none;
+  }
+}
+
+@media (max-width: 846px) {
+  .menu-item {
+    display: none;
+  }
 }
