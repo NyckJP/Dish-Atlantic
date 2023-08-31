@@ -24,14 +24,14 @@ const TopBar = ({ user }) => {
     </li>
   ];
 
-  const menuItems = [
+  const menuItems = (
     <Menu.Items className="menu-list">
       <Menu.Item><Link to="/"><i className="fa-solid fa-house" /> Home</Link></Menu.Item>
       <Menu.Item><Link to="/restaurants"><i className="fa-solid fa-utensils" /> Restaurants</Link></Menu.Item>
       <Menu.Item><Link to="/saved"><i className="fa-solid fa-clock" /> Saved</Link></Menu.Item>
       <Menu.Item><Link to="/about">About Me</Link></Menu.Item>
     </Menu.Items>
-  ]
+  )
 
   return (
     <div className="top-bar">

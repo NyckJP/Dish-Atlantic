@@ -31,7 +31,7 @@ const RestaurantList = (props) => {
                 <div className="grid-margin-y grid-x grid-margin-x center-items">
                     <SearchCityForm setCity={props.setCity} />
                     <div className="cell">
-                        <h2 className="text-center">Popular Restaurants in {props.city.name}</h2>
+                        <h2 className="text-center list-title">Restaurants in {props.city.name}</h2>
                     </div>
                     <div className="grid-container">
                         <div className="grid-x center-items">

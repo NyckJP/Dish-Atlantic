@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Great+Vibes&display=swap');
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
@@ -16,6 +17,10 @@
 .top-bar {
   background-image: linear-gradient(#38aecc, #edf7f5);
   font-style: italic;
+}
+
+.page-height {
+  min-height: 82vh;
 }
 
 .menu {
@@ -116,7 +121,8 @@ a {
 }
 
 .restaurant-info {
-  font-size: 22px;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 30px;
 }
 
 .tile-image {
@@ -139,8 +145,45 @@ a {
   align-items: center;
 }
 
+.background-photo {
+  position: absolute;
+  height: 95%;
+  width: 100%;
+  z-index: -1;
+  mix-blend-mode: color-burn;
+  opacity: .3;
+}
+
 .title {
-  font-size: 100px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 10rem;
+  margin-top: 1.5rem;
+}
+
+.greeting {
+  margin-bottom: 2rem;
+}
+
+.greeting h3 {
+  font-size: 3.5rem;
+}
+
+.landing-page-link {
+  font-size: 1.5rem;
+}
+
+.log-in-header {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.log-in-list {
+  font-size: 1.5rem;
+  text-align: left; 
+}
+
+.list-title {
+  font-size: 3rem;
 }
 
 .show-page {
@@ -164,6 +207,24 @@ a {
 }
 
 @media (max-width: 846px) {
+  .title {
+    font-size: 5rem;
+  }
+
+  .greeting h3 {
+    font-size: 2.2rem;
+  }
+  
+  .log-in-header {
+    font-size: 2rem;
+  }
+
+  .log-in-list {
+    font-size: 1.2rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
   .menu-item {
     display: none;
   }
