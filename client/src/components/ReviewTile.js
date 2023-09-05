@@ -96,9 +96,13 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
 
     let recommendation
     if (recommended) {
-        recommendation = <h5>Would Recommend</h5>
+        recommendation = <h5 className="green-font">Would Recommend</h5>
     } else {
-        recommendation = <h5>Wouldn't Recommend</h5>
+        recommendation = <h5 className="red-font">Wouldn't Recommend</h5>
+    }
+
+    if(!helpfulVoteCount) {
+        helpfulVoteCount = 0;
     }
 
     let controls
@@ -122,12 +126,12 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
     }
     
     return (
-        <div className="callout secondary">
+        <div className="callout review-tile">
             <p>{author}</p>
             <h3>{topic}</h3>
             {recommendation}
             <h5>{content}</h5>
-            <p><i className="fa-solid fa-handshake-angle" onClick={addHelpfulVote} /> {helpfulVoteCount} people found this helpful</p>
+            <p><i className="fa-solid fa-handshake-angle" onClick={handleHelpfulVote} /> {helpfulVoteCount} people found this helpful</p>
             {controls}
             {editForm}
         </div>

@@ -20,7 +20,7 @@
 }
 
 .page-height {
-  min-height: 82vh;
+  min-height: calc(100vh - 15.7rem);
 }
 
 .menu {
@@ -97,14 +97,21 @@ a {
   align-items: center;
   padding: 0px;
   margin-right: 20px;
+  background-color: #a1e2f3;
   border-color: #00a6fb;
   border-radius: 20px;
-  background-color: #a1e2f3;
   transition: box-shadow .3s;
 }
 
 .restaurant-tile:hover {
   box-shadow: -3px 3px #00a6fb;
+}
+
+.review-tile {
+  background-color: #a1e2f3;
+  border-color: #00a6fb;
+  border-radius: 20px;
+  width: 30rem;
 }
 
 .tile-content {
@@ -200,6 +207,41 @@ a {
   z-index: 10;
 }
 
+.info-banner {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+}
+
+.show-page-image {
+  border-radius: 2rem;
+  width: 25rem;
+  height: 20rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.show-page-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h4 {
+    font-size: 2.5rem;
+  }
+}
+
+.new-review-form {
+  width: 29rem;
+}
+
+.green-font {
+  color: green;
+}
+
+.red-font {
+  color: rgb(200, 0, 0);
+}
+
 @media (min-width: 846px) {
   .menu-button {
     display: none;
@@ -227,5 +269,34 @@ a {
 
   .menu-item {
     display: none;
+  }
+
+  .show-page {
+    h1 {
+      font-size: 2.2rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .info-banner {
+    flex-direction: column;
+  }
+
+  .show-page-details {
+    align-items: center;
+    h4 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .review-tile {
+    h3 {
+      font-size: 2rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
   }
 }

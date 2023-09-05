@@ -33,6 +33,10 @@ savedIdsRouter.post("/", async (req, res) => {
 savedIdsRouter.get("/ids", async (req, res) => {
     const userId = req.user?.id
 
+    if(!userId) {
+        return res.status(200).json({ savedIds: [] })
+    }
+
     try {
         const currentUser = await User.query().findById(userId)
         const savedIds = await currentUser.$relatedQuery("savedIds")
