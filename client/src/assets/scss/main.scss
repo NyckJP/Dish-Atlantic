@@ -73,9 +73,11 @@ a {
 
 .search-city-container {
   background-color: #a1e2f3;
-  margin-top: 10px;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border-color: #00a6fb;
-  max-width: 700px;
+  width: 40rem;
   border-radius: 1.25rem;
   text-align: center;
 }
@@ -92,19 +94,38 @@ a {
 }
 
 .restaurant-tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  margin-right: 20px;
   background-color: #a1e2f3;
   border-color: #00a6fb;
   border-radius: 20px;
+  width: 45rem;
+  padding: 0px;
   transition: box-shadow .3s;
 }
 
 .restaurant-tile:hover {
   box-shadow: -3px 3px #00a6fb;
+}
+
+.tile-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.tile-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  margin-right: 2rem;
+}
+
+.restaurant-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // font-family: 'Fredericka the Great', cursive;
+  font-size: 35px;
+  width: 30rem;
+  height: 250px
 }
 
 .review-tile {
@@ -114,28 +135,23 @@ a {
   width: 30rem;
 }
 
-.tile-content {
-  align-items: center;
-}
-
-.section {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-.restaurant-img {
-  padding: 10px;
-}
-
-.restaurant-info {
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 30px;
-}
-
-.tile-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 20px;
+.save-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // margin-top: 2rem;
+  div {
+    line-height: 50px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .save-buttons:hover {
+    background-color: #00a6fb;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+  }
 }
 
 .photo {
@@ -165,10 +181,6 @@ a {
   font-family: 'Great Vibes', cursive;
   font-size: 10rem;
   margin-top: 1.5rem;
-}
-
-.greeting {
-  margin-bottom: 2rem;
 }
 
 .greeting h3 {
@@ -269,6 +281,31 @@ a {
 
   .menu-item {
     display: none;
+  }
+
+  .list-title {
+    font-size: 2.5rem;
+  }
+
+  .restaurant-tile {
+    width: 27rem;
+    margin-right: 0rem;
+  }
+
+  .tile-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tile-image {
+    width: 100%;
+    height: auto;
+    margin-right: 0rem;
+  }
+
+  .restaurant-info {
+    align-items: center;
+    text-align: center;
   }
 
   .show-page {

@@ -21,7 +21,7 @@ const SearchCityForm = (props) => {
     }
     
     return (
-        <form onSubmit={handleSumbit} className="callout cell search-city-container">
+        <form onSubmit={handleSumbit} className="callout search-city-container">
             <label htmlFor="name">
                 Search for restaurants in your location
             </label>
