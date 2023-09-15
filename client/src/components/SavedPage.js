@@ -46,12 +46,16 @@ const SavedPage = () => {
     })
     
     return (
-        <>
-            <h2>Favorites</h2>
-            {favoritesList}
-            <h2>Try Later</h2>
-            {tryLatersList}
-        </>
+        <div className="saved-page">
+            <div className="half-saved-page">
+                <h2><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</h2>
+                {favoritesList}
+            </div>
+            <div className="half-saved-page">
+                <h2><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved For Later</h2>
+                {tryLatersList}
+            </div>
+        </div>
     )
 }
 

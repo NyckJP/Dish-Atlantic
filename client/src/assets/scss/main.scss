@@ -139,7 +139,6 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // margin-top: 2rem;
   div {
     line-height: 50px;
     font-size: 1rem;
@@ -254,13 +253,38 @@ a {
   color: rgb(200, 0, 0);
 }
 
-@media (min-width: 846px) {
-  .menu-button {
-    display: none;
+.saved-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.half-saved-page {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .saved-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .half-saved-page {
+    width: 100%;
   }
 }
 
 @media (max-width: 846px) {
+  .menu-button {
+    display: block;
+  }
+
   .title {
     font-size: 5rem;
   }
@@ -335,5 +359,9 @@ a {
     h5 {
       font-size: 1.2rem;
     }
+  }
+
+  .saved-page h2 {
+    font-size: 3rem;
   }
 }
