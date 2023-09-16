@@ -39,7 +39,7 @@ const LandingPage = (props) => {
                 </>
             )
     } else {
-        personalGreeting = <h3 className="cell">Welcome, {props.user.userName}</h3>
+        personalGreeting = <h3 className="cell personal-greeting">Welcome, {props.user.userName}</h3>
     }
     
     return (
@@ -50,7 +50,7 @@ const LandingPage = (props) => {
                     <h2 className="title cell">Dish Atlantic</h2>
                     <div className="greeting">
                         {personalGreeting}
-                        <h3 className="cell">Find restaurants with dishes you may like to try</h3>
+                        <h3 className="cell">Explore local restaurants and discover new dishes you may like to try!</h3>
                         <a href="/restaurants" className="cell landing-page-link">Find Places in New York <i className="fa-solid fa-arrow-right" /></a>
                     </div>
                     <SearchCityForm setCity={props.setCity} setShouldRedirect={setShouldRedirect}/>

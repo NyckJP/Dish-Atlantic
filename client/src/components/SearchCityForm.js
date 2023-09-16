@@ -35,7 +35,7 @@ const SearchCityForm = (props) => {
                 value={searchedCity.name}
             />
                 
-            <button className="button" type="submit">Submit</button>
+            <button className="button" type="submit">Enter</button>
         </form>
     )
 }
