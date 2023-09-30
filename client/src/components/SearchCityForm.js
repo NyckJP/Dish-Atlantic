@@ -21,9 +21,9 @@ const SearchCityForm = (props) => {
     }
     
     return (
-        <form onSubmit={handleSumbit} className="callout cell search-city-container">
+        <form onSubmit={handleSumbit} className="callout search-city-container">
             <label htmlFor="name">
-                Search for your area
+                Search for restaurants in your location
             </label>
                 
             <input
@@ -35,7 +35,7 @@ const SearchCityForm = (props) => {
                 value={searchedCity.name}
             />
                 
-            <button className="button" type="submit">Submit</button>
+            <button className="button" type="submit">Enter</button>
         </form>
     )
 }

@@ -71,35 +71,36 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
     let favoriteButton
     let tryLaterButton
     if(favorited) {
-        favoriteButton = <input className="button" type="button" value="Favorited" onClick={handleFavoriteClick}/>
+        favoriteButton = <div className="save-buttons" onClick={handleFavoriteClick}><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</div>
     } else {
-        favoriteButton = <input className="button" type="button" value="Favorite" onClick={handleFavoriteClick}/>
+        favoriteButton = <div className="save-buttons" onClick={handleFavoriteClick}><i className="fa-regular fa-star" /> Favorite</div>
     }
     if(savedForLater) {
-        tryLaterButton = <input className="button" type="button" value="Saved for Later" onClick={handleTryLaterClick}/>
+        tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved for Later</div>
     } else {
-        tryLaterButton = <input className="button" type="button" value="Try Later" onClick={handleTryLaterClick}/>
+        tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-regular fa-clock" /> Try Later</div>
     }
 
     return (
-        <>
-            <a href={`/restaurants/${id}`} className="callout restaurant-tile">
-                <div className="tile-content grid-x ">
-                    <div className="section restaurant-img">
-                        <img src={image_url} className="tile-image"/>
-                    </div>
-                    <div className="section restaurant-info">
-                        {name}<br/>
-                        {location.address1}<br/>
-                        {city}
-                        {openStatus}
+        <div className="callout restaurant-tile">
+            <div className="tile-content">
+                <a href={`/restaurants/${id}`}>
+                    <img src={image_url} className="tile-image"/>
+                </a>
+                <div className="restaurant-info">
+                    <div className="tile-restaurant-name">{name}</div>
+                    <div>{location.address1}</div>
+                    <div>{city}{openStatus}</div>
+                    <div className="save-options">
+                        {favoriteButton}
+                        {tryLaterButton}
+                        <a href={`/restaurants/${id}`}>
+                            <i className="fa-solid fa-comment" style={{color: "#a8a8a8",}}/> {reviewCount} reviews
+                        </a>
                     </div>
                 </div>
-            </a>
-            {favoriteButton}
-            {tryLaterButton}
-            {reviewCount} reviews
-        </>
+            </div>
+        </div>
     )
 }
 

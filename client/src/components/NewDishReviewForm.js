@@ -20,7 +20,7 @@ const NewDishReviewForm = ({ postReview }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="new-review-form" onSubmit={handleSubmit}>
             <label>
                 Topic:
                 <input 
@@ -28,6 +28,7 @@ const NewDishReviewForm = ({ postReview }) => {
                     name="topic" 
                     onChange={handleInputChange}
                     value={newReview.topic}
+                    placeholder="'Experience' or name of dish"
                 />
             </label>
 

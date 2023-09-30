@@ -16,7 +16,7 @@ import AboutMePage from "./AboutMePage.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [city, setCity] = useState({ name: "Boston" })
+  const [city, setCity] = useState({ name: "New York" })
   
   const fetchCurrentUser = async () => {
     try {
@@ -35,7 +35,7 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-      <Route 
+        <Route 
           exact path="/" 
           render={() => <LandingPage setCity={setCity} user={currentUser}/>} 
         />

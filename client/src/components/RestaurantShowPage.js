@@ -81,6 +81,15 @@ const RestaurantShowPage = props => {
     const handleFormRequest = () => {
         setShouldRenderForm(!shouldRenderForm)
     }
+
+    let transactionTypes
+    if(restaurant.transactions) {
+        transactionTypes = restaurant.transactions.map(type => {
+            if(type === 'restaurant_reservation')
+                return "*restaurant reservation "
+            return `*${type} `
+        })
+    }
     
     const reviewList = restaurant.reviews.map(review => {
         return (
@@ -110,12 +119,18 @@ const RestaurantShowPage = props => {
     }
 
     return (
-        <div className="show-page">
+        <div className="show-page page-height">
             <h1>{restaurant.name}</h1>
-            <img src={restaurant.image_url}/>
-            <h4>Rating: {restaurant.rating} (of {restaurant.review_count} Yelp reviews)</h4>
-            <h4>Phone Number: {restaurant.display_phone}</h4>
-            <h4>Address: {restaurant.location?.address1}</h4>
+            <div className="info-banner">
+                <img className="show-page-image" src={restaurant.image_url}/>
+                <div className="show-page-details">
+                    <h4>{restaurant.location?.display_address[0]} - {restaurant.location?.display_address[1]}</h4>
+                    <h4>{restaurant.display_phone}</h4>
+                    <h4 className="green-font">{transactionTypes}</h4>
+                    <h4>{restaurant.rating} stars (from {restaurant.review_count} Yelp reviews)</h4>
+                </div>
+            </div>
+            <h2>Reviews</h2>
             <input className="button" type="button" value="LEAVE A REVIEW" onClick={handleFormRequest}/>
             {form}
             <div>{reviewList}</div>

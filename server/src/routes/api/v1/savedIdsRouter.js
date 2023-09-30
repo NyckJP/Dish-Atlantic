@@ -6,7 +6,7 @@ const savedIdsRouter = new express.Router()
 
 savedIdsRouter.post("/", async (req, res) => {
     const { restaurantId, savedAs } = req.body
-    const userId = req.user.id
+    const userId = req.user?.id
 
     try {
         const currentUser = await User.query().findById(userId)
@@ -31,7 +31,11 @@ savedIdsRouter.post("/", async (req, res) => {
 })
 
 savedIdsRouter.get("/ids", async (req, res) => {
-    const userId = req.user.id
+    const userId = req.user?.id
+
+    if(!userId) {
+        return res.status(200).json({ savedIds: [] })
+    }
 
     try {
         const currentUser = await User.query().findById(userId)
@@ -44,7 +48,7 @@ savedIdsRouter.get("/ids", async (req, res) => {
 })
 
 savedIdsRouter.get("/restaurants", async (req, res) => {
-    const userId = req.user.id
+    const userId = req.user?.id
 
     try {
         const currentUser = await User.query().findById(userId)

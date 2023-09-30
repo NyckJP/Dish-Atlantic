@@ -27,8 +27,6 @@ const Footer = () => {
         )
     })
 
-    //About the Developer
-    //Headshot and links to linkedin and github
     return (
         <footer className="footer">
             <div className="footer-content">
