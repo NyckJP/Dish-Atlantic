@@ -91,7 +91,13 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city }) => {
                     <div className="tile-restaurant-name">{name}</div>
                     <div>{location.address1}</div>
                     <div>{city}{openStatus}</div>
-                    <div className="save-options">{favoriteButton}{tryLaterButton}<div><i className="fa-solid fa-comment" style={{color: "#a8a8a8",}}/> {reviewCount} reviews</div></div>
+                    <div className="save-options">
+                        {favoriteButton}
+                        {tryLaterButton}
+                        <a href={`/restaurants/${id}`}>
+                            <i className="fa-solid fa-comment" style={{color: "#a8a8a8",}}/> {reviewCount} reviews
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

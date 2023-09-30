@@ -94,7 +94,7 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="grid-container">
+    <div className="grid-container page-height">
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
         <div>

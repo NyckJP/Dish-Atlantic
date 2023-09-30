@@ -60,6 +60,12 @@ a {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .about-me {
@@ -71,10 +77,6 @@ a {
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px
-}
-
-.footer-content a {
-  color: white;
 }
 
 .search-city-container {
@@ -143,11 +145,12 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  div {
+  div, a{
     line-height: 50px;
     font-size: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    color: black;
   }
   .save-buttons:hover {
     background-color: #00a6fb;
@@ -157,18 +160,23 @@ a {
   }
 }
 
-.photo {
-  width: 15%;
-  height: auto;
-  box-sizing: border-box;
-  border-radius: 20px;
-  margin-bottom: 25px;
-}
-
 .about-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  img {
+    width: 15rem;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-bottom: 25px;
+  }
+  h3 {
+    font-weight: bold;
+  }
+  p {
+    width: 27rem;
+  }
 }
 
 .background-photo {
@@ -266,9 +274,13 @@ a {
   color: rgb(200, 0, 0);
 }
 
-.saved-page {
+.saved-lists {
   display: flex;
   flex-direction: row;
+}
+
+.saved-page-title {
+  text-align: center;
 }
 
 .half-saved-page {
@@ -280,6 +292,13 @@ a {
 
 .menu-button {
   display: none;
+}
+
+@media (min-width: 1502px) {
+  .saved-page {
+    width: 94rem;
+    margin: auto;
+  }
 }
 
 @media (max-width: 1440px) {
@@ -344,6 +363,7 @@ a {
   .restaurant-info {
     align-items: center;
     text-align: center;
+    width: 27rem;
   }
 
   .show-page {

@@ -26,23 +26,22 @@ const RestaurantList = (props) => {
     })
         
     return (
-        <>
-            <div className="grid-container">
-                <div className="grid-margin-y grid-x grid-margin-x center-items">
-                    <SearchCityForm setCity={props.setCity} />
-                    <div className="cell">
-                        <h2 className="text-center list-title">Restaurants in {props.city.name}</h2>
-                    </div>
-                    <div className="grid-container">
-                        <div className="grid-x center-items">
-                            <ul className="cell medium-12">
-                                {restaurantList}
-                            </ul>
-                        </div>
+        <div className="grid-container page-height">
+            <div className="grid-margin-y grid-x grid-margin-x center-items">
+                <SearchCityForm setCity={props.setCity} />
+                <div className="cell">
+                    <h2 className="text-center list-title">Restaurants Found</h2>
+                    <h4 className="text-center">({props.city.name})</h4>
+                </div>
+                <div className="grid-container">
+                    <div className="grid-x center-items">
+                        <ul className="cell medium-12">
+                            {restaurantList}
+                        </ul>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

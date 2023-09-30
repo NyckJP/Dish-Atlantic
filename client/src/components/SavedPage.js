@@ -20,7 +20,7 @@ const SavedPage = () => {
         getSavedRestaurants()
     }, [])
 
-    const favoritesList = favorites.map(favorite => {
+    let favoritesList = favorites.map(favorite => {
         return (
             <RestaurantTile 
                 key={favorite.id} 
@@ -32,7 +32,16 @@ const SavedPage = () => {
             />
         )
     })
-    const tryLatersList = tryLaters.map(tryLater => {
+    if(favoritesList.length === 0) {
+        favoritesList = (
+            <>
+                <div>You haven't listed any restaurants as favorites.</div>
+                <a href="/restaurants">Browse through some now!</a>
+            </>
+        )
+    }
+    
+    let tryLatersList = tryLaters.map(tryLater => {
         return (
             <RestaurantTile 
                 key={tryLater.id} 
@@ -44,16 +53,27 @@ const SavedPage = () => {
             />
         )
     })
+    if(tryLatersList.length === 0) {
+        tryLatersList = (
+            <>
+                <div>You haven't listed any restaurants to try later.</div>
+                <a href="/restaurants">Browse through some now!</a>
+            </>
+        )
+    }
     
     return (
-        <div className="saved-page">
-            <div className="half-saved-page">
-                <h2><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</h2>
-                {favoritesList}
-            </div>
-            <div className="half-saved-page">
-                <h2><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved For Later</h2>
-                {tryLatersList}
+        <div className="page-height">
+            <h1 className="text-center list-title">Saved Restaurants</h1>
+            <div className="saved-lists">
+                <div className="half-saved-page">
+                    <h2><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</h2>
+                    {favoritesList}
+                </div>
+                <div className="half-saved-page">
+                    <h2><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved For Later</h2>
+                    {tryLatersList}
+                </div>
             </div>
         </div>
     )
