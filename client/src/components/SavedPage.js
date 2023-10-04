@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react"
+import { Redirect } from "react-router-dom"
 import RestaurantTile from "./RestaurantTile.js"
 
-const SavedPage = () => {
+const SavedPage = ({ user }) => {
     const [favorites, setFavorites] = useState([])
     const [tryLaters, setTryLaters] = useState([])
+
+    if(!user) {
+        return <Redirect push to= "/users/new" />
+    }
 
     const getSavedRestaurants = async () => {
         try {

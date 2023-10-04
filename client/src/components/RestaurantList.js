@@ -27,7 +27,7 @@ const RestaurantList = (props) => {
         
     return (
         <div className="grid-container page-height">
-            <div className="grid-margin-y grid-x grid-margin-x center-items">
+            <div className="grid-x grid-margin-x center-items">
                 <SearchCityForm setCity={props.setCity} />
                 <div className="cell">
                     <h2 className="text-center list-title">Restaurants Found</h2>
