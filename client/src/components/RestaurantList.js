@@ -4,14 +4,37 @@ import SearchCityForm from "./SearchCityForm.js"
 
 const RestaurantList = (props) => {
     const [restaurants, setRestaurants] = useState([])
+    const [title, setTitle] = useState(<></>)
 
     const getRestaurants = async () => {
-        try {
-            const response = await fetch(`/api/v1/restaurants/${props.city.name}`)
-            const parsedResponse = await response.json()
-            setRestaurants(parsedResponse.businesses)
-        } catch (error) {
-            console.error(`Error in List Fetch: ${error}`)
+        if(props.city.name === 'Invalid Input') {
+            setRestaurants([])
+            setTitle(
+                <div className="cell">
+                    <h2 className="text-center list-title red-font">Invalid Search</h2>
+                    <h4 className="text-center red-font">Please Try Again</h4>
+                </div>
+            )
+        } else {
+            try {
+                const response = await fetch(`/api/v1/restaurants/${props.city.name}`)
+                if(!response.ok) {
+                    if(response.status === 400) {
+                        props.setCity({name: 'Invalid Input'})
+                        throw new Error('Bad Request to YelpClient')
+                    }
+                }
+                const parsedResponse = await response.json()
+                setRestaurants(parsedResponse.businesses)
+                setTitle(
+                    <div className="cell">
+                        <h2 className="text-center list-title">Restaurants Found</h2>
+                        <h4 className="text-center">({props.city.name})</h4>
+                    </div>
+                )
+            } catch (error) {
+                console.error(`Error in List Fetch: ${error}`)
+            }
         }
     }
 
@@ -29,10 +52,7 @@ const RestaurantList = (props) => {
         <div className="grid-container page-height">
             <div className="grid-x grid-margin-x center-items">
                 <SearchCityForm setCity={props.setCity} />
-                <div className="cell">
-                    <h2 className="text-center list-title">Restaurants Found</h2>
-                    <h4 className="text-center">({props.city.name})</h4>
-                </div>
+                {title}
                 <div className="grid-container">
                     <div className="grid-x center-items">
                         <ul className="cell medium-12">

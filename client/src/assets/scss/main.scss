@@ -96,7 +96,13 @@ a {
 
 .center-items {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-form-error {
+  margin-top: -.5rem;
+  margin-bottom: .5rem;
 }
 
 .restaurant-tile {
