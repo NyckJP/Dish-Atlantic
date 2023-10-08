@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
+import { Redirect } from "react-router-dom"
 import RestaurantTile from "./RestaurantTile.js"
 import SearchCityForm from "./SearchCityForm.js"
 
 const RestaurantList = (props) => {
     const [restaurants, setRestaurants] = useState([])
     const [title, setTitle] = useState(<></>)
+    const [shouldRedirect, setShouldRedirect] = useState(false)
 
     const getRestaurants = async () => {
         if(props.city.name === 'Invalid Input') {
@@ -44,10 +46,14 @@ const RestaurantList = (props) => {
     
     const restaurantList = restaurants.map(business => {
         return (
-            <RestaurantTile key={business.id} {...business}/>
+            <RestaurantTile key={business.id} {...business} user={props.user} setShouldRedirect={setShouldRedirect} />
         )
     })
-        
+
+    if(shouldRedirect) {
+        return <Redirect push to="user-sessions/new" />
+    }
+
     return (
         <div className="grid-container page-height">
             <div className="grid-x grid-margin-x center-items">

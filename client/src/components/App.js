@@ -41,7 +41,7 @@ const App = (props) => {
         />
         <Route 
           exact path="/restaurants" 
-          render={() => <RestaurantList city={city} setCity={setCity} />} 
+          render={() => <RestaurantList city={city} setCity={setCity} user={currentUser}/>} 
         />
         <Route 
           exact path="/restaurants/:id"  

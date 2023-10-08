@@ -68,7 +68,7 @@ const SavedPage = ({ user }) => {
     }
     
     return (
-        <div className="page-height">
+        <div className="saved-page page-height">
             <h1 className="text-center list-title">Saved Restaurants</h1>
             <div className="saved-lists">
                 <div className="half-saved-page">

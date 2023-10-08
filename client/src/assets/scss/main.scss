@@ -313,6 +313,10 @@ a {
     align-items: center;
   }
 
+  .saved-lists {
+    flex-direction: column;
+  }
+
   .half-saved-page {
     width: 100%;
   }
@@ -344,6 +348,10 @@ a {
 
   .menu-item {
     display: none;
+  }
+
+  .search-city-container {
+    width: 28rem;
   }
 
   .list-title {
@@ -403,5 +411,9 @@ a {
 
   .saved-page h2 {
     font-size: 3rem;
+  }
+
+  .saved-lists {
+    flex-direction: column;
   }
 }
