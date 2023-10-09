@@ -137,6 +137,7 @@ const RegistrationForm = () => {
           <input type="submit" className="button" value="Register" />
         </div>
       </form>
+      <a href="/user-sessions/new">Already have an account? Sign In</a>
     </div>
   );
 };

@@ -92,6 +92,7 @@ const SignInForm = () => {
           <input type="submit" className="button" value="Sign In" />
         </div>
       </form>
+      <a href="/users/new">Dont have an account? Sign Up</a>
     </div>
   );
 };
