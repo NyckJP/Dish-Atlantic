@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom"
 import FormError from "../layout/FormError";
 import config from "../../config";
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ user }) => {
   const [userPayload, setUserPayload] = useState({
     userName: "",
     email: "",
@@ -13,6 +14,11 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  if(user) {
+    console.log("here")
+    return <Redirect push to= "/saved" />
+  }
 
   const validateInput = (payload) => {
     setErrors({});
@@ -137,6 +143,7 @@ const RegistrationForm = () => {
           <input type="submit" className="button" value="Register" />
         </div>
       </form>
+      <a href="/user-sessions/new">Already have an account? Sign In</a>
     </div>
   );
 };

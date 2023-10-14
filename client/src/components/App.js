@@ -37,19 +37,25 @@ const App = (props) => {
       <Switch>
         <Route 
           exact path="/" 
-          render={() => <LandingPage setCity={setCity} user={currentUser}/>} 
+          render={() => <LandingPage setCity={setCity} user={currentUser} />} 
         />
         <Route 
           exact path="/restaurants" 
-          render={() => <RestaurantList city={city} setCity={setCity}/>} 
+          render={() => <RestaurantList city={city} setCity={setCity} user={currentUser}/>} 
         />
         <Route 
           exact path="/restaurants/:id"  
           render={props => <RestaurantShowPage {...props} user={currentUser} />} 
         />
-        <Route exact path="/saved" component={SavedPage} />
+        <Route 
+          exact path="/saved" 
+          render={() => <SavedPage user={currentUser} />}
+        />
         <Route exact path="/about" component={AboutMePage} />
-        <Route exact path="/users/new" component={RegistrationForm} />
+        <Route 
+          exact path="/users/new" 
+          render={() => <RegistrationForm user={currentUser} />} 
+        />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
       <Footer />

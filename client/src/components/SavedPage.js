@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react"
+import { Redirect } from "react-router-dom"
 import RestaurantTile from "./RestaurantTile.js"
 
-const SavedPage = () => {
+const SavedPage = ({ user }) => {
     const [favorites, setFavorites] = useState([])
     const [tryLaters, setTryLaters] = useState([])
+
+    if(!user) {
+        return <Redirect push to= "/users/new" />
+    }
 
     const getSavedRestaurants = async () => {
         try {
@@ -63,7 +68,7 @@ const SavedPage = () => {
     }
     
     return (
-        <div className="page-height">
+        <div className="saved-page page-height">
             <h1 className="text-center list-title">Saved Restaurants</h1>
             <div className="saved-lists">
                 <div className="half-saved-page">

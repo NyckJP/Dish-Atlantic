@@ -10,11 +10,14 @@ restaurantsRouter.get("/:city", async (req, res) => {
 
     try {
         const restaurantData = await YelpClient.getRestaurants(city)
+        if(restaurantData === undefined){ 
+            throw new Error('Bad Request')
+        }
         const restaurants = JSON.parse(restaurantData.body)
         return res.status(200).json(restaurants)
     } catch (error) {
         console.log(error)
-        return res.status(error.status)
+        return res.status(400).json()
     }
 })
 
