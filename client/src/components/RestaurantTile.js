@@ -52,7 +52,7 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city, user, 
     }, [])
 
     const handleFavoriteClick = () => {
-        if(!user) {
+        if(!user && setShouldRedirect) {
             setShouldRedirect(true)
         } else {
             saveId("FAVORITE")
@@ -60,7 +60,7 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city, user, 
         }
     }
     const handleTryLaterClick = () => {
-        if(!user) {
+        if(!user && setShouldRedirect) {
             setShouldRedirect(true)
         } else {
             saveId("TRY LATER")

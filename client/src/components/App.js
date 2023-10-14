@@ -52,7 +52,10 @@ const App = (props) => {
           render={() => <SavedPage user={currentUser} />}
         />
         <Route exact path="/about" component={AboutMePage} />
-        <Route exact path="/users/new" component={RegistrationForm} />
+        <Route 
+          exact path="/users/new" 
+          render={() => <RegistrationForm user={currentUser} />} 
+        />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
       <Footer />
