@@ -60,7 +60,7 @@ const RestaurantList = (props) => {
                 <SearchCityForm setCity={props.setCity} />
                 {title}
                 <div className="grid-container">
-                    <div className="grid-x center-items">
+                    <div className="center-items">
                         <ul className="cell medium-12">
                             {restaurantList}
                         </ul>

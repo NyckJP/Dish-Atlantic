@@ -110,6 +110,7 @@ a {
   border-color: #00a6fb;
   border-radius: 20px;
   width: 45rem;
+  height: 300px;
   padding: 0px;
   transition: box-shadow .3s;
 }
@@ -121,11 +122,12 @@ a {
 .tile-content {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 .tile-image {
   width: 250px;
-  height: 250px;
+  height: 100%;
   border-radius: 20px;
   margin-right: 2rem;
 }
@@ -137,7 +139,6 @@ a {
   // font-family: 'Fredericka the Great', cursive;
   font-size: 35px;
   width: 30rem;
-  height: 250px
 }
 
 .review-tile {
@@ -151,6 +152,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-right: 1rem;
   div, a{
     line-height: 50px;
     font-size: 1rem;
@@ -360,6 +362,7 @@ a {
 
   .restaurant-tile {
     width: 27rem;
+    height: auto;
     margin-right: 0rem;
   }
 
@@ -378,6 +381,11 @@ a {
     align-items: center;
     text-align: center;
     width: 27rem;
+  }
+
+  .save-options {
+    margin-right: 0rem;
+    margin-bottom: .5rem;
   }
 
   .show-page {
