@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
-import FormError from "../layout/FormError";
-import config from "../../config";
+import FormError from "../layout/FormError"
+import config from "../../config"
 
 const RegistrationForm = ({ user }) => {
   const [userPayload, setUserPayload] = useState({
@@ -9,11 +9,11 @@ const RegistrationForm = ({ user }) => {
     email: "",
     password: "",
     passwordConfirmation: "",
-  });
+  })
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({})
 
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   if(user) {
     console.log("here")
@@ -21,10 +21,10 @@ const RegistrationForm = ({ user }) => {
   }
 
   const validateInput = (payload) => {
-    setErrors({});
-    const { userName, email, password, passwordConfirmation } = payload;
-    const emailRegexp = config.validation.email.regexp;
-    let newErrors = {};
+    setErrors({})
+    const { userName, email, password, passwordConfirmation } = payload
+    const emailRegexp = config.validation.email.regexp
+    let newErrors = {}
     if(userName.trim() == "") {
       newErrors = {
         ...newErrors, 
@@ -36,36 +36,36 @@ const RegistrationForm = ({ user }) => {
       newErrors = {
         ...newErrors,
         email: "is invalid",
-      };
+      }
     }
 
     if (password.trim() == "") {
       newErrors = {
         ...newErrors,
         password: "is required",
-      };
+      }
     }
 
     if (passwordConfirmation.trim() === "") {
       newErrors = {
         ...newErrors,
         passwordConfirmation: "is required",
-      };
+      }
     } else {
       if (passwordConfirmation !== password) {
         newErrors = {
           ...newErrors,
           passwordConfirmation: "does not match password",
-        };
+        }
       }
     }
 
-    setErrors(newErrors);
-  };
+    setErrors(newErrors)
+  }
 
   const onSubmit = async (event) => {
-    event.preventDefault();
-    validateInput(userPayload);
+    event.preventDefault()
+    validateInput(userPayload)
     try {
       if (Object.keys(errors).length === 0) {
         const response = await fetch("/api/v1/users", {
@@ -74,78 +74,80 @@ const RegistrationForm = ({ user }) => {
           headers: new Headers({
             "Content-Type": "application/json",
           }),
-        });
+        })
         if (!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`;
-          const error = new Error(errorMessage);
-          throw error;
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw error
         }
-        const userData = await response.json();
-        setShouldRedirect(true);
+        const userData = await response.json()
+        setShouldRedirect(true)
       }
     } catch (err) {
-      console.error(`Error in fetch: ${err.message}`);
+      console.error(`Error in fetch: ${err.message}`)
     }
-  };
+  }
 
   const onInputChange = (event) => {
     setUserPayload({
       ...userPayload,
       [event.currentTarget.name]: event.currentTarget.value,
-    });
-  };
+    })
+  }
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/"
   }
 
   return (
-    <div className="grid-container page-height">
-      <h1 className="text-center">Register An Account</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label>
-            Username:
-            <input type="text" name="userName" value={userPayload.userName} onChange={onInputChange} />
-            <FormError error={errors.userName} />
-          </label>
-          <label>
-            Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={userPayload.password}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.password} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password Confirmation
-            <input
-              type="password"
-              name="passwordConfirmation"
-              value={userPayload.passwordConfirmation}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.passwordConfirmation} />
-          </label>
-        </div>
-        <div>
-          <input type="submit" className="button" value="Register" />
-        </div>
-      </form>
-      <a href="/user-sessions/new">Already have an account? Sign In</a>
+    <div className="grid-container page-height center-items vertically-center">
+      <div className="callout form-container">
+        <h1 className="text-center">Register An Account</h1>
+        <form onSubmit={onSubmit}>
+          <div>
+            <label>
+              Username:
+              <input type="text" name="userName" value={userPayload.userName} onChange={onInputChange} />
+              <FormError error={errors.userName} />
+            </label>
+            <label>
+              Email:
+              <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+              <FormError error={errors.email} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Password:
+              <input
+                type="password"
+                name="password"
+                value={userPayload.password}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.password} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Password Confirmation:
+              <input
+                type="password"
+                name="passwordConfirmation"
+                value={userPayload.passwordConfirmation}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.passwordConfirmation} />
+            </label>
+          </div>
+          <div className="center-items">
+            <input type="submit" className="button" value="Register" />
+          </div>
+        </form>
+        <a href="/user-sessions/new" className="center-items">Already have an account? Sign In</a>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default RegistrationForm;
+export default RegistrationForm

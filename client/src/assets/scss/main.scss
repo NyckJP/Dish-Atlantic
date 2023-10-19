@@ -68,6 +68,13 @@ a {
   }
 }
 
+.form-container {
+  background-color: #a1e2f3;
+  border-color: #00a6fb;
+  border-radius: 20px;
+  width: 53rem;
+}
+
 .about-me {
   display: flex;
   justify-content: center;
@@ -98,6 +105,10 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.vertically-center {
+  justify-content: center;
 }
 
 .search-form-error {
@@ -177,6 +188,7 @@ a {
     height: auto;
     box-sizing: border-box;
     border-radius: 20px;
+    margin-top: 25px;
     margin-bottom: 25px;
   }
   h3 {
@@ -350,6 +362,10 @@ a {
 
   .menu-item {
     display: none;
+  }
+
+  .form-container {
+    width: 27rem;
   }
 
   .search-city-container {
