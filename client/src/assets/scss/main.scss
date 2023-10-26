@@ -101,6 +101,14 @@ a {
   align-items: center;
 }
 
+.authenticaton-links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 20rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
 .center-items {
   display: flex;
   flex-direction: column;
@@ -157,6 +165,21 @@ a {
   border-color: #00a6fb;
   border-radius: 20px;
   width: 30rem;
+  p, h3, h5 {
+    margin-bottom: 0rem;
+  }
+}
+
+.clickable {
+  padding: 10px;
+  margin-bottom: .2rem;
+  border-radius: 20px;
+}
+
+.clickable:hover {
+  background-color: #00a6fb;
+  color: white;
+  cursor: pointer;
 }
 
 .save-options {

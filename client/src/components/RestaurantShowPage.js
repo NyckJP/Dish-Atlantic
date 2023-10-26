@@ -9,7 +9,7 @@ const RestaurantShowPage = props => {
     const [restaurant, setRestaurant] = useState({reviews: []})
     const [shouldRenderForm, setShouldRenderForm] = useState(false)
     const [errors, setErrors] = useState([])
-    console.log(restaurant)
+    // console.log(restaurant)
 
     const restaurantId = props.match.params.id
 
@@ -114,7 +114,12 @@ const RestaurantShowPage = props => {
                 </>
             )
         } else {
-            form = <Link to="/user-sessions/new">Sign In</Link>
+            form = (
+                <div className="authenticaton-links">
+                    <Link to="/user-sessions/new">Sign In</Link>
+                    <Link to="/users/new">Sign Up</Link>
+                </div>
+            )
         }
     }
 
