@@ -23,12 +23,19 @@ const RegistrationForm = ({ user }) => {
   const validateInput = (payload) => {
     setErrors({})
     const { userName, email, password, passwordConfirmation } = payload
-    const emailRegexp = config.validation.email.regexp
+    const emailRegexp = config.validation.email.regexp.emailRegex
     let newErrors = {}
-    if(userName.trim() == "") {
+    if (userName.trim() == "") {
       newErrors = {
         ...newErrors, 
         userName: "is invalid"
+      }
+    } else {
+      if (userName.length > 8) {
+        newErrors = {
+          ...newErrors,
+          userName: "8 characters max"
+        }
       }
     }
 
@@ -107,12 +114,12 @@ const RegistrationForm = ({ user }) => {
           <div>
             <label>
               Username:
-              <input type="text" name="userName" value={userPayload.userName} onChange={onInputChange} />
+              <input type="text" name="userName" placeholder="8 characters max" value={userPayload.userName} onChange={onInputChange} />
               <FormError error={errors.userName} />
             </label>
             <label>
               Email:
-              <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+              <input type="text" name="email" placeholder="fake email is acceptable" value={userPayload.email} onChange={onInputChange} />
               <FormError error={errors.email} />
             </label>
           </div>

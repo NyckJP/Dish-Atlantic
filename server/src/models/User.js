@@ -29,7 +29,7 @@ class User extends uniqueFunc(Model) {
       required: ["userName", "email"],
 
       properties: {
-        userName: { type: "string", minLength: 1 },
+        userName: { type: "string", minLength: 1, maxLength: 8 },
         email: { type: "string", pattern: "^\\S+@\\S+\\.\\S+$" },
         cryptedPassword: { type: "string" },
       },
