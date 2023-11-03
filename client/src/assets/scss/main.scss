@@ -306,7 +306,14 @@ a {
 }
 
 .new-review-form {
-  width: 29rem;
+  background-color: #a1e2f3;
+  border-color: #00a6fb;
+  border-radius: 20px;
+  width: 30rem;
+}
+
+.review-form-submit {
+  margin-bottom: 0rem;
 }
 
 .green-font {

@@ -2,14 +2,10 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import ReviewTile from "./ReviewTile.js"
 import NewDishReviewForm from "./NewDishReviewForm.js"
-import translateServerErrors from "../services/translateServerErrors";
-import ErrorList from "./layout/ErrorList";
 
 const RestaurantShowPage = props => {
     const [restaurant, setRestaurant] = useState({reviews: []})
     const [shouldRenderForm, setShouldRenderForm] = useState(false)
-    const [errors, setErrors] = useState([])
-    // console.log(restaurant)
 
     const restaurantId = props.match.params.id
 
@@ -41,14 +37,8 @@ const RestaurantShowPage = props => {
                 body: JSON.stringify(payload)
             })
             if (!response.ok){
-                if (response.status === 422) {
-                    const parsedResponse = await response.json()
-                    const newErrors = translateServerErrors(parsedResponse.errors)
-                    return setErrors(newErrors)
-                }
                 throw new Error(`${response.status} (${response.statusText})`)
             }
-            setErrors([])
             const parsedResponse = await response.json()
             const updatedReviews = restaurant.reviews.concat(parsedResponse.review);
             setRestaurant({ ...restaurant, reviews: updatedReviews })
@@ -107,12 +97,7 @@ const RestaurantShowPage = props => {
     let form
     if (shouldRenderForm){
         if (props.user){
-            form = (
-                <>
-                    <ErrorList errors={errors} /> 
-                    <NewDishReviewForm postReview={postReview} />
-                </>
-            )
+            form = <NewDishReviewForm postReview={postReview} />
         } else {
             form = (
                 <div className="authenticaton-links">
