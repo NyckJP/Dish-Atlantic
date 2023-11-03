@@ -97,7 +97,7 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city, user, 
                     <img src={image_url} className="tile-image"/>
                 </a>
                 <div className="restaurant-info">
-                    <div className="tile-restaurant-name">{name}</div>
+                    <div>{name}</div>
                     <div>{location.address1}</div>
                     <div>{city}{openStatus}</div>
                     <div className="save-options">

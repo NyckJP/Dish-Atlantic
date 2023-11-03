@@ -376,8 +376,12 @@ a {
     font-size: 6rem;
   }
 
-  .greeting h3 {
-    font-size: 2.5rem;
+  .greeting {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    h3 {
+      font-size: 2.5rem;
+    }
   }
   
   .log-in-header {
@@ -426,6 +430,8 @@ a {
   .restaurant-info {
     align-items: center;
     text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
     width: 27rem;
   }
 
