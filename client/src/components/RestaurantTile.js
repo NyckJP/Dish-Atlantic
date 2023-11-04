@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Redirect } from "react-router-dom"
 
-const RestaurantTile = ({ name, location, image_url, id, is_closed, city, user, setShouldRedirect }) => {
+const RestaurantTile = ({ name, location, image_url, id, user, setShouldRedirect }) => {
     const [favorited, setFavorited] = useState(false)
     const [savedForLater, setSavedForLater] = useState(false)
     const [reviewCount, setReviewCount] = useState(0)
@@ -68,15 +68,6 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city, user, 
         }
     }
     
-    let openStatus
-    if(is_closed != null){
-        if (!is_closed) {
-            openStatus = 'Currently Open'
-        } else {
-            openStatus = 'Currently Closed'
-        }
-    }
-
     let favoriteButton
     let tryLaterButton
     if(favorited) {
@@ -98,8 +89,8 @@ const RestaurantTile = ({ name, location, image_url, id, is_closed, city, user, 
                 </a>
                 <div className="restaurant-info">
                     <div>{name}</div>
-                    <div>{location.address1}</div>
-                    <div>{city}{openStatus}</div>
+                    <div>{location.display_address[0]}</div>
+                    <div>{location.display_address[location.display_address.length - 1]}</div>
                     <div className="save-options">
                         {favoriteButton}
                         {tryLaterButton}
