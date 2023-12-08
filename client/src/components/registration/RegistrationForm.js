@@ -16,7 +16,6 @@ const RegistrationForm = ({ user }) => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   if(user) {
-    console.log("here")
     return <Redirect push to= "/saved" />
   }
 

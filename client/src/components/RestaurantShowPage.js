@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import ReviewTile from "./ReviewTile.js"
 import NewDishReviewForm from "./NewDishReviewForm.js"
+import SaveButtons from "./SaveButtons.js"
 
 const RestaurantShowPage = props => {
     const [restaurant, setRestaurant] = useState({reviews: []})
@@ -108,14 +109,31 @@ const RestaurantShowPage = props => {
         }
     }
 
+    let saveButtons
+    if(props.user) {
+        saveButtons = (
+            <div className="save-options">
+                <SaveButtons restaurantId={restaurantId} user={props.user}/>
+            </div>
+        )
+    }
+
+    let phoneNumber = <h4>{restaurant.display_phone}</h4>
+    if(!restaurant.display_phone) {
+        phoneNumber = <h4 className="red-font">Phone number not provided</h4>
+    }
+
     return (
         <div className="show-page page-height">
-            <h1>{restaurant.name}</h1>
+            <h1 className="text-center">{restaurant.name}</h1>
             <div className="info-banner">
-                <img className="show-page-image" src={restaurant.image_url}/>
+                <div className="banner-left-side">
+                    <img className="show-page-image" src={restaurant.image_url}/>
+                    {saveButtons}
+                </div>
                 <div className="show-page-details">
                     <h4>{restaurant.location?.display_address[0]} - {restaurant.location?.display_address[1]}</h4>
-                    <h4>{restaurant.display_phone}</h4>
+                    {phoneNumber}
                     <h4 className="green-font">{transactionTypes}</h4>
                     <h4>{restaurant.rating} stars (from {restaurant.review_count} Yelp reviews)</h4>
                 </div>
