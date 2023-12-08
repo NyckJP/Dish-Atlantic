@@ -66,33 +66,35 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container page-height" onSubmit={onSubmit}>
-      <h1>Sign In</h1>
-      <form>
-        <div>
-          <label>
-            Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={userPayload.password}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.password} />
-          </label>
-        </div>
-        <div>
-          <input type="submit" className="button" value="Sign In" />
-        </div>
-      </form>
-      <a href="/users/new">Dont have an account? Sign Up</a>
+    <div className="grid-container page-height center-items vertically-center" onSubmit={onSubmit}>
+      <div className="callout form-container">
+        <h1 className="text-center">Sign In</h1>
+        <form>
+          <div>
+            <label>
+              Email:
+              <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+              <FormError error={errors.email} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Password:
+              <input
+                type="password"
+                name="password"
+                value={userPayload.password}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.password} />
+            </label>
+          </div>
+          <div className="center-items">
+            <input type="submit" className="button" value="Sign In" />
+          </div>
+        </form>
+        <a href="/users/new" className="center-items">Dont have an account? Sign Up</a>
+      </div>
     </div>
   );
 };

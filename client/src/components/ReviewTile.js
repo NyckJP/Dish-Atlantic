@@ -29,27 +29,27 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
 
     const addHelpfulVote = async () => {
         try {
-          const response = await fetch(`/api/v1/reviews/${id}/helpfulVotes`, {
-            method: "POST",
-            headers: new Headers({
-              "Content-Type": "application/json",
-            }),
-            body: JSON.stringify({ reviewId: id, userId: user.id }),
-          })
-          if (!response.ok) {
-            throw new Error(`${response.status} (${response.statusText})`)
-          } else {
-            const body = await response.json()
-            const newHelpfulVoteCount = body.newHelpfulVoteCount
-            const editedReviews = restaurant.reviews
-            const editedId = editedReviews.findIndex((review) => review.id === id)
-            editedReviews[editedId].helpfulVoteCount = newHelpfulVoteCount
-            setRestaurant({ ...restaurant, reviews: editedReviews })
-          }
+            const response = await fetch(`/api/v1/reviews/${id}/helpfulVotes`, {
+                method: "POST",
+                headers: new Headers({
+                "Content-Type": "application/json",
+                }),
+                body: JSON.stringify({ reviewId: id, userId: user.id }),
+            })
+            if (!response.ok) {
+                throw new Error(`${response.status} (${response.statusText})`)
+            } else {
+                const body = await response.json()
+                const newHelpfulVoteCount = body.newHelpfulVoteCount
+                const editedReviews = restaurant.reviews
+                const editedId = editedReviews.findIndex((review) => review.id === id)
+                editedReviews[editedId].helpfulVoteCount = newHelpfulVoteCount
+                setRestaurant({ ...restaurant, reviews: editedReviews })
+            }
         } catch (error) {
           console.error(`Error in vote fetch: ${error.message}`)
         }
-      }
+    }
 
     const editReview = async(editData) => {
         try {
@@ -105,14 +105,20 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
         helpfulVoteCount = 0;
     }
 
+    let helpfulVoteButton
     let controls
-    if(user && user.id === userId){
-        controls = (
-            <div className="button-group">
-                <input className="button" type="button" value="Delete" onClick={handleDelete} />
-                <input className="button" type="button" value="Edit" onClick={handleEdit}/>
-            </div>
-        )
+    if(user){
+        helpfulVoteButton = <p><i className="fa-solid fa-handshake-angle clickable" onClick={handleHelpfulVote} /> {helpfulVoteCount} people found this helpful</p>
+        if(user.id === userId){
+            controls = (
+                <div className="button-group">
+                    <input className="button" type="button" value="Delete" onClick={handleDelete} />
+                    <input className="button" type="button" value="Edit" onClick={handleEdit}/>
+                </div>
+            )
+        }
+    } else {
+        helpfulVoteButton = <p><i className="fa-solid fa-handshake-angle"/> {helpfulVoteCount} people found this helpful</p>
     }
 
     let editForm
@@ -127,11 +133,11 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
     
     return (
         <div className="callout review-tile">
-            <p>{author}</p>
+            <p>Review by {author}</p>
             <h3>{topic}</h3>
             {recommendation}
             <h5>{content}</h5>
-            <p><i className="fa-solid fa-handshake-angle" onClick={handleHelpfulVote} /> {helpfulVoteCount} people found this helpful</p>
+            {helpfulVoteButton}
             {controls}
             {editForm}
         </div>

@@ -30,8 +30,8 @@ const findCache = async (savedIds) => {
                 restaurantId: singleRestaurant.id,
                 imageUrl: singleRestaurant.image_url,
                 name: singleRestaurant.name,
-                address: singleRestaurant.location.address1,
-                city: singleRestaurant.location.city
+                address1: singleRestaurant.location.display_address[0],
+                address2: singleRestaurant.location.display_address[singleRestaurant.location.display_address.length - 1]
             }
             const newCacheEntry = await CachedRestaurant.query().insertAndFetch(newCache)
             cacheList.push(newCacheEntry)

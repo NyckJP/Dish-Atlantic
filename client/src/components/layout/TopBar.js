@@ -29,7 +29,7 @@ const TopBar = ({ user }) => {
       <Menu.Item><Link to="/"><i className="fa-solid fa-house" /> Home</Link></Menu.Item>
       <Menu.Item><Link to="/restaurants"><i className="fa-solid fa-utensils" /> Restaurants</Link></Menu.Item>
       <Menu.Item><Link to="/saved"><i className="fa-solid fa-clock" /> Saved</Link></Menu.Item>
-      <Menu.Item><Link to="/about">About Me</Link></Menu.Item>
+      <Menu.Item><Link to="/about"><i className="fa-solid fa-user" /> About Me</Link></Menu.Item>
     </Menu.Items>
   )
 
@@ -50,7 +50,7 @@ const TopBar = ({ user }) => {
             <Link to="/saved"><i className="fa-solid fa-clock" /> Saved</Link>
           </li>
           <li className="menu-item">
-            <Link to="/about">About Me</Link>
+            <Link to="/about"><i className="fa-solid fa-user" /> About Me</Link>
           </li>
         </ul>
       </Menu>

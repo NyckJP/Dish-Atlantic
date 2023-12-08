@@ -30,10 +30,9 @@ const SavedPage = ({ user }) => {
             <RestaurantTile 
                 key={favorite.id} 
                 name={favorite.name}
-                location={{ address1: favorite.address }}
+                location={{ display_address: [favorite.address1, favorite.address2] }}
                 image_url={favorite.imageUrl}
                 id={favorite.restaurantId}
-                city={favorite.city}
             />
         )
     })
@@ -51,10 +50,9 @@ const SavedPage = ({ user }) => {
             <RestaurantTile 
                 key={tryLater.id} 
                 name={tryLater.name}
-                location={{ address1: tryLater.address }}
+                location={{ display_address: [tryLater.address1, tryLater.address2] }}
                 image_url={tryLater.imageUrl}
                 id={tryLater.restaurantId}
-                city={tryLater.city}
             />
         )
     })
