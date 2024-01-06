@@ -66,14 +66,14 @@ const RegistrationForm = ({ user }) => {
       }
     }
 
-    setErrors(newErrors)
+    return newErrors
   }
 
   const onSubmit = async (event) => {
     event.preventDefault()
-    validateInput(userPayload)
+    let newErrors = validateInput(userPayload)
     try {
-      if (Object.keys(errors).length === 0) {
+      if (Object.keys(newErrors).length === 0) {
         const response = await fetch("/api/v1/users", {
           method: "post",
           body: JSON.stringify(userPayload),
@@ -82,13 +82,17 @@ const RegistrationForm = ({ user }) => {
           }),
         })
         if (!response.ok) {
+          if(response.status === 422) {
+            newErrors = {...newErrors, email: "email already in use"}
+            setErrors(newErrors)
+          }
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
           throw error
         }
-        const userData = await response.json()
         setShouldRedirect(true)
       }
+      setErrors(newErrors)
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }

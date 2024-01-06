@@ -8,7 +8,7 @@ const SignInForm = () => {
   const [errors, setErrors] = useState({});
 
   const validateInput = (payload) => {
-    setErrors({});
+    setErrors({})
     const { email, password } = payload;
     const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
@@ -26,14 +26,14 @@ const SignInForm = () => {
       };
     }
 
-    setErrors(newErrors);
-  };
+    return newErrors
+  }
 
   const onSubmit = async (event) => {
     event.preventDefault()
-    validateInput(userPayload)
+    let newErrors = validateInput(userPayload)
     try {
-      if (Object.keys(errors).length === 0) {
+      if (Object.keys(newErrors).length === 0) {
         const response = await fetch("/api/v1/user-sessions", {
           method: "post",
           body: JSON.stringify(userPayload),
@@ -42,13 +42,17 @@ const SignInForm = () => {
           })
         })
         if(!response.ok) {
+          if(response.status === 401) {
+            newErrors = {...newErrors, password: "sign in failed - invalid credentials"}
+            setErrors(newErrors)
+          }
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
           throw(error)
         }
-        const userData = await response.json()
         setShouldRedirect(true)
       }
+      setErrors(newErrors)
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
     }
