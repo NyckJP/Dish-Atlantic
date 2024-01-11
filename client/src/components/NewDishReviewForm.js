@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import FormError from "./layout/FormError";
+import React, { useState } from "react"
+import FormError from "./layout/FormError"
 
 const NewDishReviewForm = ({ postReview }) => {
     const [newReview, setNewReview] = useState({
@@ -7,35 +7,34 @@ const NewDishReviewForm = ({ postReview }) => {
         recommended: "",
         content: ""
     })
-
     const [errors, setErrors] = useState({})
 
     const validateInput = (payload) => {
         setErrors({})
         const { topic, recommended, content } = payload
         let newErrors = {}
-        if(topic.trim() == "") {
+        if (topic.trim() == "") {
             newErrors = {
                 ...newErrors,
                 topic: "is invalid"
             }
         }
 
-        if(recommended == "") {
+        if (recommended == "") {
             newErrors = {
                 ...newErrors,
                 recommended: "is required"
             }
         }
 
-        if(content == "") {
+        if (content == "") {
             newErrors = {
                 ...newErrors,
                 content: "is required"
             }
         }
 
-        setErrors(newErrors)
+        return newErrors
     }
 
     const handleInputChange = event => {
@@ -47,8 +46,9 @@ const NewDishReviewForm = ({ postReview }) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        validateInput(newReview)
-        if(Object.keys(errors).length === 0) {
+        let newErrors = validateInput(newReview)
+        setErrors(newErrors)
+        if (Object.keys(newErrors).length === 0) {
             postReview(newReview)
         }
     }

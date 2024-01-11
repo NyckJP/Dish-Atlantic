@@ -6,7 +6,7 @@ const SavedPage = ({ user }) => {
     const [favorites, setFavorites] = useState([])
     const [tryLaters, setTryLaters] = useState([])
 
-    if(!user) {
+    if (!user) {
         return <Redirect push to= "/users/new" />
     }
 
@@ -36,7 +36,7 @@ const SavedPage = ({ user }) => {
             />
         )
     })
-    if(favoritesList.length === 0) {
+    if (favoritesList.length === 0) {
         favoritesList = (
             <>
                 <div>You haven't listed any restaurants as favorites.</div>
@@ -56,7 +56,7 @@ const SavedPage = ({ user }) => {
             />
         )
     })
-    if(tryLatersList.length === 0) {
+    if (tryLatersList.length === 0) {
         tryLatersList = (
             <>
                 <div>You haven't listed any restaurants to try later.</div>

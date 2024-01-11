@@ -14,13 +14,13 @@ const LandingPage = (props) => {
         location.href = "/user-sessions/new"
     }
 
-    if(shouldRedirect) {
+    if (shouldRedirect) {
         return <Redirect push to= "/restaurants" />
     }
 
     let personalGreeting
     let logInOptions
-    if(!props.user) {
+    if (!props.user) {
         logInOptions = 
             (
                 <>

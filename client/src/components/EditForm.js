@@ -6,7 +6,6 @@ const EditForm = ({ editReview, topic, recommended, content }) => {
         recommended: recommended,
         content: content
     })
-    const [errors, setErrors] = useState([])
 
     const handleInputChange = event => {
         setEditedReview({

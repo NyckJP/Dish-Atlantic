@@ -14,7 +14,7 @@ const RestaurantShowPage = props => {
         try {
             const response = await fetch(`/api/v1/restaurants/show/${restaurantId}`)
             if (!response.ok) {
-                throw new Error(`${response.status} (${response.statusText})`);
+                throw new Error(`${response.status} (${response.statusText})`)
             }
             const parsedResponse = await response.json()
             setRestaurant(parsedResponse)
@@ -41,7 +41,7 @@ const RestaurantShowPage = props => {
                 throw new Error(`${response.status} (${response.statusText})`)
             }
             const parsedResponse = await response.json()
-            const updatedReviews = restaurant.reviews.concat(parsedResponse.review);
+            const updatedReviews = restaurant.reviews.concat(parsedResponse.review)
             setRestaurant({ ...restaurant, reviews: updatedReviews })
             setShouldRenderForm(false)
         } catch (error) {
@@ -58,7 +58,7 @@ const RestaurantShowPage = props => {
                 })
             })
             if (!response.ok) {
-                throw new Error(`${response.status} (${response.statusText})`);
+                throw new Error(`${response.status} (${response.statusText})`)
             }
             setRestaurant({
                 ...restaurant,
@@ -74,9 +74,9 @@ const RestaurantShowPage = props => {
     }
 
     let transactionTypes
-    if(restaurant.transactions) {
+    if (restaurant.transactions) {
         transactionTypes = restaurant.transactions.map(type => {
-            if(type === 'restaurant_reservation')
+            if (type === 'restaurant_reservation')
                 return "*restaurant reservation "
             return `*${type} `
         })
@@ -110,7 +110,7 @@ const RestaurantShowPage = props => {
     }
 
     let saveButtons
-    if(props.user) {
+    if (props.user) {
         saveButtons = (
             <div className="save-options">
                 <SaveButtons restaurantId={restaurantId} user={props.user}/>
@@ -119,7 +119,7 @@ const RestaurantShowPage = props => {
     }
 
     let phoneNumber = <h4>{restaurant.display_phone}</h4>
-    if(!restaurant.display_phone) {
+    if (!restaurant.display_phone) {
         phoneNumber = <h4 className="red-font">Phone number not provided</h4>
     }
 

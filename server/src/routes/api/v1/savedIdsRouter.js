@@ -14,7 +14,7 @@ savedIdsRouter.post("/", async (req, res) => {
             restaurantId: restaurantId,
             savedAs: savedAs
         })
-        if(!existingSavedId) {
+        if (!existingSavedId) {
             const newSavedId = await SavedId.query().insertAndFetch({ userId, restaurantId, savedAs})
             return res.status(201).json({ newSavedId: newSavedId })
         } else {
@@ -50,7 +50,7 @@ savedIdsRouter.get("/:restaurantId", async (req, res) => {
     const userId = req.user?.id
     const { restaurantId } = req.params
 
-    if(!userId) {
+    if (!userId) {
         return res.status(200).json({ savedIds: [] })
     }
 
@@ -59,8 +59,8 @@ savedIdsRouter.get("/:restaurantId", async (req, res) => {
         const savedIds = await currentUser.$relatedQuery("savedIds")
         let saveStatus = { favorited: false, savedForLater: false }
         savedIds.forEach(savedId => {
-            if(savedId.restaurantId === restaurantId) {
-                if(savedId.savedAs === 'FAVORITE') {
+            if (savedId.restaurantId === restaurantId) {
+                if (savedId.savedAs === 'FAVORITE') {
                     saveStatus.favorited = true
                 } else {
                     saveStatus.savedForLater = true

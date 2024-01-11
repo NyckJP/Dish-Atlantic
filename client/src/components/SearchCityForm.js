@@ -14,14 +14,14 @@ const SearchCityForm = (props) => {
 
     const handleSumbit = event => {
         event.preventDefault()
-        if(searchedCity.name.trim() == '') {
+        if (searchedCity.name.trim() == '') {
             setError(<div className="search-form-error red-font">Must enter a location</div>)
             return
         }
         setError()
         props.setCity(searchedCity)
         clearSearchBar()
-        if(props.setShouldRedirect) {
+        if (props.setShouldRedirect) {
             props.setShouldRedirect(true)
         }
     }

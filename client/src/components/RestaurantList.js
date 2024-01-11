@@ -9,7 +9,7 @@ const RestaurantList = (props) => {
     const [shouldRedirect, setShouldRedirect] = useState(false)
 
     const getRestaurants = async () => {
-        if(props.city.name === 'Invalid Input') {
+        if (props.city.name === 'Invalid Input') {
             setRestaurants([])
             setTitle(
                 <div className="cell">
@@ -20,8 +20,8 @@ const RestaurantList = (props) => {
         } else {
             try {
                 const response = await fetch(`/api/v1/restaurants/${props.city.name}`)
-                if(!response.ok) {
-                    if(response.status === 400) {
+                if (!response.ok) {
+                    if (response.status === 400) {
                         props.setCity({name: 'Invalid Input'})
                         throw new Error('Bad Request to YelpClient')
                     }
@@ -50,7 +50,7 @@ const RestaurantList = (props) => {
         )
     })
 
-    if(shouldRedirect) {
+    if (shouldRedirect) {
         return <Redirect push to="user-sessions/new" />
     }
 

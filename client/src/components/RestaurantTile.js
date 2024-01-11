@@ -19,7 +19,7 @@ const RestaurantTile = ({ name, location, image_url, id, user, setShouldRedirect
     }, [])
 
     let reviewCountMessage = `${reviewCount} reviews`
-    if(reviewCount === 1) {
+    if (reviewCount === 1) {
         reviewCountMessage = "1 review"
     }
 

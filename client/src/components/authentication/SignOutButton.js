@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react"
+import { Redirect } from "react-router-dom"
 
 const SignOutButton = () => {
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const signOut = async (event) => {
     event.preventDefault()
@@ -13,7 +13,7 @@ const SignOutButton = () => {
           "Content-Type": "application/json",
         })
       })
-      if(!response.ok) {
+      if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
         throw(error)
@@ -27,14 +27,14 @@ const SignOutButton = () => {
   }
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/"
   }
 
   return (
     <button type="button" className="button" onClick={signOut}>
       Sign Out
     </button>
-  );
-};
+  )
+}
 
-export default SignOutButton;
+export default SignOutButton
