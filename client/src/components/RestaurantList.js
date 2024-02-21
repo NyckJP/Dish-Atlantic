@@ -12,9 +12,9 @@ const RestaurantList = (props) => {
         if (props.city.name === 'Invalid Input') {
             setRestaurants([])
             setTitle(
-                <div className="cell">
-                    <h2 className="text-center list-title red-font">Invalid Search</h2>
-                    <h4 className="text-center red-font">Please Try Again</h4>
+                <div className="text-center red-font">
+                    <h2 className="restaurant-list-title">Invalid Search</h2>
+                    <h4>Please Try Again</h4>
                 </div>
             )
         } else {
@@ -29,9 +29,9 @@ const RestaurantList = (props) => {
                 const parsedResponse = await response.json()
                 setRestaurants(parsedResponse.businesses)
                 setTitle(
-                    <div className="cell">
-                        <h2 className="text-center list-title">Restaurants Found</h2>
-                        <h4 className="text-center">({props.city.name})</h4>
+                    <div className="text-center">
+                        <h2 className="restaurant-list-title">Restaurants Found</h2>
+                        <h4>({props.city.name})</h4>
                     </div>
                 )
             } catch (error) {
@@ -55,17 +55,13 @@ const RestaurantList = (props) => {
     }
 
     return (
-        <div className="grid-container page-height">
-            <div className="grid-x grid-margin-x center-items">
-                <SearchCityForm setCity={props.setCity} />
-                {title}
-                <div className="grid-container">
-                    <div className="center-items">
-                        <ul className="cell medium-12">
-                            {restaurantList}
-                        </ul>
-                    </div>
-                </div>
+        <div className="grid-container page-height center-items">
+            <SearchCityForm setCity={props.setCity} />
+            {title}
+            <div className="grid-container center-items">
+                <ul className="cell">
+                    {restaurantList}
+                </ul>
             </div>
         </div>
     )

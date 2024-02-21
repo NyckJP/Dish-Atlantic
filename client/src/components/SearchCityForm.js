@@ -4,10 +4,6 @@ const SearchCityForm = (props) => {
     const [searchedCity, setSearchedCity] = useState({ name: ""})
     const [error, setError] = useState()
 
-    const clearSearchBar = () => {
-        setSearchedCity({name: ""})
-    }
-
     const handleInputChange = event => {
         setSearchedCity({...searchedCity, name: event.currentTarget.value})
     }
@@ -20,7 +16,7 @@ const SearchCityForm = (props) => {
         }
         setError()
         props.setCity(searchedCity)
-        clearSearchBar()
+        setSearchedCity({name: ""})
         if (props.setShouldRedirect) {
             props.setShouldRedirect(true)
         }

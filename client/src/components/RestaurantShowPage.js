@@ -101,7 +101,7 @@ const RestaurantShowPage = props => {
             form = <NewDishReviewForm postReview={postReview} />
         } else {
             form = (
-                <div className="authenticaton-links">
+                <div className="authentication-links">
                     <Link to="/user-sessions/new">Sign In</Link>
                     <Link to="/users/new">Sign Up</Link>
                 </div>
@@ -128,10 +128,10 @@ const RestaurantShowPage = props => {
             <h1 className="text-center">{restaurant.name}</h1>
             <div className="info-banner">
                 <div className="banner-left-side">
-                    <img className="show-page-image" src={restaurant.image_url}/>
+                    <img className="restaurant-image" src={restaurant.image_url}/>
                     {saveButtons}
                 </div>
-                <div className="show-page-details">
+                <div className="restaurant-details">
                     <h4>{restaurant.location?.display_address[0]} - {restaurant.location?.display_address[1]}</h4>
                     {phoneNumber}
                     <h4 className="green-font">{transactionTypes}</h4>
