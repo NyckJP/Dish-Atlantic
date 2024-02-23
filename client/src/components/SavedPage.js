@@ -7,7 +7,7 @@ const SavedPage = ({ user }) => {
     const [tryLaters, setTryLaters] = useState([])
 
     if (!user) {
-        return <Redirect push to= "/users/new" />
+        return <Redirect push to= "/user-sessions/new" />
     }
 
     const getSavedRestaurants = async () => {

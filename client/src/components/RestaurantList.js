@@ -51,7 +51,7 @@ const RestaurantList = (props) => {
     })
 
     if (shouldRedirect) {
-        return <Redirect push to="user-sessions/new" />
+        return <Redirect push to="/users/new" />
     }
 
     return (
