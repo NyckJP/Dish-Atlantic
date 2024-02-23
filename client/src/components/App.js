@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { hot } from "react-hot-loader/root"
 import getCurrentUser from "../services/getCurrentUser"
 import "../assets/scss/main.scss"
-import RegistrationForm from "./registration/RegistrationForm"
-import SignInForm from "./authentication/SignInForm"
-import TopBar from "./layout/TopBar"
-import Footer from "./layout/Footer"
-import LandingPage from "./LandingPage"
+import RegistrationForm from "./registration/RegistrationForm.js"
+import SignInForm from "./authentication/SignInForm.js"
+import TopBar from "./layout/TopBar.js"
+import Footer from "./layout/Footer.js"
+import LandingPage from "./LandingPage.js"
 import RestaurantList from "./RestaurantList.js"
 import RestaurantShowPage from "./RestaurantShowPage.js"
-import SavedPage from "./SavedPage"
+import SavedPage from "./SavedPage.js"
 import AboutMePage from "./AboutMePage.js"
 
 const App = (props) => {
@@ -55,7 +55,10 @@ const App = (props) => {
           exact path="/users/new" 
           render={() => <RegistrationForm user={currentUser} />} 
         />
-        <Route exact path="/user-sessions/new" component={SignInForm} />
+        <Route 
+          exact path="/user-sessions/new" 
+          render={() => <SignInForm user={currentUser} />}
+        />
       </Switch>
       <Footer />
     </Router>
