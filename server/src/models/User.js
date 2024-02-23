@@ -1,26 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const Bcrypt = require("bcrypt");
-const unique = require("objection-unique");
-const Model = require("./Model");
+const Bcrypt = require("bcrypt")
+const unique = require("objection-unique")
+const Model = require("./Model")
 
-const saltRounds = 10;
+const saltRounds = 10
 
 const uniqueFunc = unique({
   fields: ["email, userName"],
   identifiers: ["id"],
-});
+})
 
 class User extends uniqueFunc(Model) {
   static get tableName() {
-    return "users";
+    return "users"
   }
 
   set password(newPassword) {
-    this.cryptedPassword = Bcrypt.hashSync(newPassword, saltRounds);
+    this.cryptedPassword = Bcrypt.hashSync(newPassword, saltRounds)
   }
 
   authenticate(password) {
-    return Bcrypt.compareSync(password, this.cryptedPassword);
+    return Bcrypt.compareSync(password, this.cryptedPassword)
   }
 
   static get jsonSchema() {
@@ -33,7 +33,7 @@ class User extends uniqueFunc(Model) {
         email: { type: "string", pattern: "^\\S+@\\S+\\.\\S+$" },
         cryptedPassword: { type: "string" },
       },
-    };
+    }
   }
 
   static get relationMappings() {
@@ -52,14 +52,14 @@ class User extends uniqueFunc(Model) {
   }
 
   $formatJson(json) {
-    const serializedJson = super.$formatJson(json);
+    const serializedJson = super.$formatJson(json)
 
     if (serializedJson.cryptedPassword) {
-      delete serializedJson.cryptedPassword;
+      delete serializedJson.cryptedPassword
     }
 
-    return serializedJson;
+    return serializedJson
   }
 }
 
-module.exports = User;
+module.exports = User

@@ -4,24 +4,20 @@ const SearchCityForm = (props) => {
     const [searchedCity, setSearchedCity] = useState({ name: ""})
     const [error, setError] = useState()
 
-    const clearSearchBar = () => {
-        setSearchedCity({name: ""})
-    }
-
     const handleInputChange = event => {
         setSearchedCity({...searchedCity, name: event.currentTarget.value})
     }
 
     const handleSumbit = event => {
         event.preventDefault()
-        if(searchedCity.name.trim() == '') {
+        if (searchedCity.name.trim() == '') {
             setError(<div className="search-form-error red-font">Must enter a location</div>)
             return
         }
         setError()
         props.setCity(searchedCity)
-        clearSearchBar()
-        if(props.setShouldRedirect) {
+        setSearchedCity({name: ""})
+        if (props.setShouldRedirect) {
             props.setShouldRedirect(true)
         }
     }

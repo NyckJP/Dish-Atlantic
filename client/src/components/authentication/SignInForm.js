@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import config from "../../config";
-import FormError from "../layout/FormError";
+import React, { useState } from "react"
+import config from "../../config"
+import FormError from "../layout/FormError"
 
 const SignInForm = () => {
-  const [userPayload, setUserPayload] = useState({ email: "", password: "" });
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [userPayload, setUserPayload] = useState({ email: "", password: "" })
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [errors, setErrors] = useState({})
 
   const validateInput = (payload) => {
     setErrors({})
-    const { email, password } = payload;
-    const emailRegexp = config.validation.email.regexp;
-    let newErrors = {};
+    const { email, password } = payload
+    const emailRegexp = config.validation.email.regexp.emailRegex
+    let newErrors = {}
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
         email: "is invalid",
-      };
+      }
     }
 
     if (password.trim() === "") {
       newErrors = {
         ...newErrors,
         password: "is required",
-      };
+      }
     }
 
     return newErrors
@@ -41,8 +41,8 @@ const SignInForm = () => {
             "Content-Type": "application/json",
           })
         })
-        if(!response.ok) {
-          if(response.status === 401) {
+        if (!response.ok) {
+          if (response.status === 401) {
             newErrors = {...newErrors, password: "sign in failed - invalid credentials"}
             setErrors(newErrors)
           }
@@ -62,11 +62,11 @@ const SignInForm = () => {
     setUserPayload({
       ...userPayload,
       [event.currentTarget.name]: event.currentTarget.value,
-    });
-  };
+    })
+  }
 
   if (shouldRedirect) {
-    location.href = "/";
+    location.href = "/"
   }
 
   return (
@@ -100,7 +100,7 @@ const SignInForm = () => {
         <a href="/users/new" className="center-items">Dont have an account? Sign Up</a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignInForm;
+export default SignInForm

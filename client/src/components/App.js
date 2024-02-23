@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { hot } from "react-hot-loader/root";
-
-import getCurrentUser from "../services/getCurrentUser";
-import "../assets/scss/main.scss";
-import RegistrationForm from "./registration/RegistrationForm";
-import SignInForm from "./authentication/SignInForm";
-import TopBar from "./layout/TopBar";
-import Footer from "./layout/Footer";
-import LandingPage from "./LandingPage";
-import RestaurantList from "./RestaurantList.js";
-import RestaurantShowPage from "./RestaurantShowPage.js";
-import SavedPage from "./SavedPage";
-import AboutMePage from "./AboutMePage.js";
+import React, { useState, useEffect } from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { hot } from "react-hot-loader/root"
+import getCurrentUser from "../services/getCurrentUser"
+import "../assets/scss/main.scss"
+import RegistrationForm from "./registration/RegistrationForm"
+import SignInForm from "./authentication/SignInForm"
+import TopBar from "./layout/TopBar"
+import Footer from "./layout/Footer"
+import LandingPage from "./LandingPage"
+import RestaurantList from "./RestaurantList.js"
+import RestaurantShowPage from "./RestaurantShowPage.js"
+import SavedPage from "./SavedPage"
+import AboutMePage from "./AboutMePage.js"
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined)
   const [city, setCity] = useState({ name: "New York" })
   
   const fetchCurrentUser = async () => {
@@ -60,7 +59,7 @@ const App = (props) => {
       </Switch>
       <Footer />
     </Router>
-  );
-};
+  )
+}
 
-export default hot(App);
+export default hot(App)

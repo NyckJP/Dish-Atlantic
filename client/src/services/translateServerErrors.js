@@ -11,8 +11,8 @@ let translateServerErrors = (errors) => {
         [field]: error.message
       }
     })
-  });
+  })
   return serializedErrors
-};
+}
 
-export default translateServerErrors;
+export default translateServerErrors

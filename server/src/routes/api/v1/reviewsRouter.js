@@ -1,10 +1,10 @@
 import express from "express"
 import { Review } from "../../../models/index.js"
 import objection from "objection"
-const { ValidationError } = objection
-import cleanUserInput from "../../../services/cleanUserInput.js";
-import reviewsHelpfulVotesRouter from "./reviewsHelpfulVotesRouter.js";
+import cleanUserInput from "../../../services/cleanUserInput.js"
+import reviewsHelpfulVotesRouter from "./reviewsHelpfulVotesRouter.js"
 
+const { ValidationError } = objection
 const reviewsRouter = new express.Router()
 
 reviewsRouter.post("/", async (req, res) => {
@@ -44,7 +44,7 @@ reviewsRouter.patch("/:id", async (req, res) => {
     } catch (error) {
         console.log(error)
         if (error instanceof ValidationError) {
-            return res.status(422).json({ errors: error.data });
+            return res.status(422).json({ errors: error.data })
         }
         return res.status(500).json({ errors: error })
     }

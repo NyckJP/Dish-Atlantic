@@ -14,7 +14,7 @@ const RestaurantShowPage = props => {
         try {
             const response = await fetch(`/api/v1/restaurants/show/${restaurantId}`)
             if (!response.ok) {
-                throw new Error(`${response.status} (${response.statusText})`);
+                throw new Error(`${response.status} (${response.statusText})`)
             }
             const parsedResponse = await response.json()
             setRestaurant(parsedResponse)
@@ -37,11 +37,11 @@ const RestaurantShowPage = props => {
                 }),
                 body: JSON.stringify(payload)
             })
-            if (!response.ok){
+            if (!response.ok) {
                 throw new Error(`${response.status} (${response.statusText})`)
             }
             const parsedResponse = await response.json()
-            const updatedReviews = restaurant.reviews.concat(parsedResponse.review);
+            const updatedReviews = restaurant.reviews.concat(parsedResponse.review)
             setRestaurant({ ...restaurant, reviews: updatedReviews })
             setShouldRenderForm(false)
         } catch (error) {
@@ -58,7 +58,7 @@ const RestaurantShowPage = props => {
                 })
             })
             if (!response.ok) {
-                throw new Error(`${response.status} (${response.statusText})`);
+                throw new Error(`${response.status} (${response.statusText})`)
             }
             setRestaurant({
                 ...restaurant,
@@ -74,9 +74,9 @@ const RestaurantShowPage = props => {
     }
 
     let transactionTypes
-    if(restaurant.transactions) {
+    if (restaurant.transactions) {
         transactionTypes = restaurant.transactions.map(type => {
-            if(type === 'restaurant_reservation')
+            if (type === 'restaurant_reservation')
                 return "*restaurant reservation "
             return `*${type} `
         })
@@ -96,12 +96,12 @@ const RestaurantShowPage = props => {
     })
     
     let form
-    if (shouldRenderForm){
-        if (props.user){
+    if (shouldRenderForm) {
+        if (props.user) {
             form = <NewDishReviewForm postReview={postReview} />
         } else {
             form = (
-                <div className="authenticaton-links">
+                <div className="authentication-links">
                     <Link to="/user-sessions/new">Sign In</Link>
                     <Link to="/users/new">Sign Up</Link>
                 </div>
@@ -110,7 +110,7 @@ const RestaurantShowPage = props => {
     }
 
     let saveButtons
-    if(props.user) {
+    if (props.user) {
         saveButtons = (
             <div className="save-options">
                 <SaveButtons restaurantId={restaurantId} user={props.user}/>
@@ -119,7 +119,7 @@ const RestaurantShowPage = props => {
     }
 
     let phoneNumber = <h4>{restaurant.display_phone}</h4>
-    if(!restaurant.display_phone) {
+    if (!restaurant.display_phone) {
         phoneNumber = <h4 className="red-font">Phone number not provided</h4>
     }
 
@@ -128,10 +128,10 @@ const RestaurantShowPage = props => {
             <h1 className="text-center">{restaurant.name}</h1>
             <div className="info-banner">
                 <div className="banner-left-side">
-                    <img className="show-page-image" src={restaurant.image_url}/>
+                    <img className="restaurant-image" src={restaurant.image_url}/>
                     {saveButtons}
                 </div>
-                <div className="show-page-details">
+                <div className="restaurant-details">
                     <h4>{restaurant.location?.display_address[0]} - {restaurant.location?.display_address[1]}</h4>
                     {phoneNumber}
                     <h4 className="green-font">{transactionTypes}</h4>

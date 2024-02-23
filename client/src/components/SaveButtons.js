@@ -8,10 +8,10 @@ const SaveButtons = ({ restaurantId, setShouldRedirect, user }) => {
         try {
             const response = await fetch(`/api/v1/savedIds/${restaurantId}`)
             const parsedResponse = await response.json()
-            if(parsedResponse.favorited) {
+            if (parsedResponse.favorited) {
                 setFavorited(true)
             }
-            if(parsedResponse.savedForLater) {
+            if (parsedResponse.savedForLater) {
                 setSavedForLater(true)
             }
         } catch (error) {
@@ -36,7 +36,7 @@ const SaveButtons = ({ restaurantId, setShouldRedirect, user }) => {
     }, [])
 
     const handleFavoriteClick = () => {
-        if(!user && setShouldRedirect) {
+        if (!user && setShouldRedirect) {
             setShouldRedirect(true)
         } else {
             saveId("FAVORITE")
@@ -44,7 +44,7 @@ const SaveButtons = ({ restaurantId, setShouldRedirect, user }) => {
         }
     }
     const handleTryLaterClick = () => {
-        if(!user && setShouldRedirect) {
+        if (!user && setShouldRedirect) {
             setShouldRedirect(true)
         } else {
             saveId("TRY LATER")
@@ -54,12 +54,12 @@ const SaveButtons = ({ restaurantId, setShouldRedirect, user }) => {
 
     let favoriteButton
     let tryLaterButton
-    if(favorited) {
+    if (favorited) {
         favoriteButton = <div className="save-buttons" onClick={handleFavoriteClick}><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</div>
     } else {
         favoriteButton = <div className="save-buttons" onClick={handleFavoriteClick}><i className="fa-regular fa-star" /> Favorite</div>
     }
-    if(savedForLater) {
+    if (savedForLater) {
         tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved for Later</div>
     } else {
         tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-regular fa-clock" /> Try Later</div>

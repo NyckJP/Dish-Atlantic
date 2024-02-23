@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
@@ -19,12 +19,21 @@
   font-style: italic;
 }
 
-.page-height {
-  min-height: calc(100vh - 15.7rem);
-}
-
 .menu {
   background-image: linear-gradient(#4fb8d2, #d8edf0);
+}
+
+.menu-button {
+  display: none;
+}
+
+.menu-list {
+  position: absolute;
+  background-image: linear-gradient(#38aecc, #edf7f5);
+  border-radius: .375rem;
+  margin-top: 35px;
+  z-index: 10;
+  width: 9rem;
 }
 
 .menu .menu-text {
@@ -43,8 +52,11 @@
   padding: 1em 6.5em;
 }
 
-a {
-  color: #00a6fb;
+.form-container {
+  background-color: #a1e2f3;
+  border-color: #00a6fb;
+  border-radius: 20px;
+  width: 53rem;
 }
 
 .footer {
@@ -53,37 +65,61 @@ a {
 
 .footer-content {
   max-width: 25rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  margin: 0rem auto;
+  padding: 4rem 0rem;
   a {
     color: white;
   }
   a:hover {
     text-decoration: underline;
   }
+  .socials {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1.5rem;
+  }
 }
 
-.form-container {
-  background-color: #a1e2f3;
-  border-color: #00a6fb;
-  border-radius: 20px;
-  width: 53rem;
+.page-height {
+  min-height: calc(100vh - 15.7rem);
 }
 
-.about-me {
+.background-photo {
+  position: absolute;
+  height: 95%;
+  width: 100%;
+  z-index: -1;
+  mix-blend-mode: color-burn;
+  opacity: .3;
+}
+
+.center-items {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.socials {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 10rem;
+  margin-top: 3rem;
+}
+
+.greeting {
+  margin-bottom: 1rem;
+  h3 {
+    font-size: 3.5rem;
+  }
+  .personal-greeting {
+    font-weight: bold;
+  }
+  a {
+    font-size: 1.5rem;
+  }
+}
+
+a {
+  color: #00a6fb;
 }
 
 .search-city-container {
@@ -95,33 +131,29 @@ a {
   text-align: center;
 }
 
-.log-in-options {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.authenticaton-links {
-  display: flex;
-  justify-content: space-evenly;
-  width: 20rem;
-  margin-bottom: 1rem;
-  align-items: center;
-}
-
-.center-items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.vertically-center {
-  justify-content: center;
-}
-
 .search-form-error {
-  margin-top: -.5rem;
-  margin-bottom: .5rem;
+  margin: -.5rem 0rem .5rem;
+}
+
+.log-in-options {
+  margin: 1rem 0rem 2rem;
+  h3 {
+    font-size: 3rem;
+  }
+  ul {
+    font-size: 1.5rem;
+    text-align: left; 
+  }
+  div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.restaurant-list-title {
+  font-size: 3rem;
+  margin-bottom: 0rem;
 }
 
 .restaurant-tile {
@@ -155,33 +187,10 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  // font-family: 'Fredericka the Great', cursive;
   font-size: 35px;
   width: 30rem;
   padding-left: .5rem;
   padding-right: .5rem;
-}
-
-.review-tile {
-  background-color: #a1e2f3;
-  border-color: #00a6fb;
-  border-radius: 20px;
-  width: 30rem;
-  p, h3, h5 {
-    margin-bottom: 0rem;
-  }
-}
-
-.clickable {
-  padding: 10px;
-  margin-bottom: .2rem;
-  border-radius: 20px;
-}
-
-.clickable:hover {
-  background-color: #00a6fb;
-  color: white;
-  cursor: pointer;
 }
 
 .save-options {
@@ -206,84 +215,34 @@ a {
   }
 }
 
-.about-page {
+.clickable {
+  padding: 10px;
+  margin-bottom: .2rem;
+  border-radius: 20px;
+}
+
+.clickable:hover {
+  background-color: #00a6fb;
+  color: white;
+  cursor: pointer;
+}
+
+.authentication-links {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  img {
-    width: 15rem;
-    height: auto;
-    box-sizing: border-box;
-    border-radius: 20px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-  }
-  h3 {
-    font-weight: bold;
-  }
-  p {
-    width: 27rem;
-  }
-}
-
-.background-photo {
-  position: absolute;
-  height: 95%;
-  width: 100%;
-  z-index: -1;
-  mix-blend-mode: color-burn;
-  opacity: .3;
-}
-
-.title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 10rem;
-  margin-top: 3rem;
-}
-
-.greeting {
+  justify-content: space-evenly;
+  width: 20rem;
   margin-bottom: 1rem;
+  align-items: center;
 }
 
-.greeting h3 {
-  font-size: 3.5rem;
-}
-
-.personal-greeting {
-  font-weight: bold;
-}
-
-.landing-page-link {
-  font-size: 1.5rem;
-}
-
-.log-in-header {
-  font-size: 3rem;
-  margin-top: 1.5rem;
-}
-
-.log-in-list {
-  font-size: 1.5rem;
-  text-align: left; 
-}
-
-.list-title {
-  font-size: 3rem;
+.vertically-center {
+  justify-content: center;
 }
 
 .show-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.menu-list {
-  position: absolute;
-  background-image: linear-gradient(#38aecc, #edf7f5);
-  border-radius: .375rem;
-  margin-top: 35px;
-  z-index: 10;
-  width: 9rem;
 }
 
 .info-banner {
@@ -297,7 +256,7 @@ a {
   margin-left: 1.5rem;
 }
 
-.show-page-image {
+.restaurant-image {
   border-radius: 2rem;
   width: auto;
   min-width: 20rem;
@@ -305,7 +264,7 @@ a {
   margin-bottom: .5rem;
 }
 
-.show-page-details {
+.restaurant-details {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -325,6 +284,16 @@ a {
   margin-bottom: 0rem;
 }
 
+.review-tile {
+  background-color: #a1e2f3;
+  border-color: #00a6fb;
+  border-radius: 20px;
+  width: 30rem;
+  p, h3, h5 {
+    margin-bottom: 0rem;
+  }
+}
+
 .green-font {
   color: green;
 }
@@ -333,13 +302,13 @@ a {
   color: rgb(200, 0, 0);
 }
 
+.saved-page-title {
+  text-align: center;
+}
+
 .saved-lists {
   display: flex;
   flex-direction: row;
-}
-
-.saved-page-title {
-  text-align: center;
 }
 
 .half-saved-page {
@@ -349,8 +318,25 @@ a {
   align-items: center;
 }
 
-.menu-button {
-  display: none;
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 15rem;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  h3 {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  p {
+    width: 27rem;
+  }
 }
 
 @media (min-width: 1502px) {
@@ -376,9 +362,17 @@ a {
 }
 
 @media (max-width: 886px) {
+  .form-container {
+    width: 27rem;
+  }
+
   .menu-button {
     display: block;
     cursor: pointer;
+  }
+  
+  .menu-item {
+    display: none;
   }
 
   .title {
@@ -386,39 +380,29 @@ a {
   }
 
   .greeting {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 0rem 1rem 1rem;
     h3 {
       font-size: 2.5rem;
     }
   }
   
-  .log-in-header {
-    font-size: 2rem;
-  }
-
-  .log-in-list {
-    font-size: 1.2rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
-  }
-
-  .menu-item {
-    display: none;
-  }
-
-  .form-container {
-    width: 27rem;
-  }
-
   .search-city-container {
     width: 28rem;
   }
 
-  .list-title {
-    font-size: 2.5rem;
+  .log-in-options {
+    h3 {
+      font-size: 2rem;
+    }
+    ul {
+      font-size: 1.2rem;
+      margin: 0rem 3rem 1rem;
+    }
+    button {
+      padding: 1em 6em;
+    }
   }
-
+  
   .restaurant-tile {
     width: 27rem;
     height: auto;
@@ -443,8 +427,7 @@ a {
   }
   
   .restaurant-name {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0rem 1rem;
   }
 
   .save-options {
@@ -465,13 +448,13 @@ a {
     flex-direction: column;
   }
 
-  .show-page-image {
+  .restaurant-image {
     width: 27rem;
     height: auto;
   }
 
-  .show-page-details {
-    align-items: center;
+  .restaurant-details {
+    text-align: center;
     h4 {
       font-size: 1.6rem;
       font-weight: bold;
@@ -486,7 +469,7 @@ a {
       font-size: 1.2rem;
     }
   }
-
+  
   .saved-page h2 {
     font-size: 3rem;
   }

@@ -1,14 +1,14 @@
-import { CachedRestaurant } from "../models/index.js";
-import YelpClient from "../apiClient/YelpClient.js";
+import { CachedRestaurant } from "../models/index.js"
+import YelpClient from "../apiClient/YelpClient.js"
 
 const isVerified = (existingCache) => {
-    if(!existingCache) {
+    if (!existingCache) {
         return false
     }
 
     const cacheTimestamp = existingCache.createdAt.getTime()
     const currentTime = new Date().getTime()
-    if(currentTime - cacheTimestamp >= 24 * 60 * 60 * 1000) {
+    if (currentTime - cacheTimestamp >= 24 * 60 * 60 * 1000) {
         return false
     }
 
@@ -18,10 +18,10 @@ const isVerified = (existingCache) => {
 const findCache = async (savedIds) => {
     let cacheList = []
 
-    for(let i = 0; i < savedIds.length; i++){
+    for (let i = 0; i < savedIds.length; i++) {
         const existingCache = await CachedRestaurant.query().findOne("restaurantId", "=", savedIds[i].restaurantId)
-        if(!isVerified(existingCache)) {
-            if(existingCache) {
+        if (!isVerified(existingCache)) {
+            if (existingCache) {
                 await CachedRestaurant.query().findOne("restaurantId", "=", savedIds[i].restaurantId).delete()
             }
             const singleRestaurantData = await YelpClient.getRestaurant(savedIds[i].restaurantId)

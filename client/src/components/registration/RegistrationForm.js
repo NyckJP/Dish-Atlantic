@@ -15,7 +15,7 @@ const RegistrationForm = ({ user }) => {
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  if(user) {
+  if (user) {
     return <Redirect push to= "/saved" />
   }
 
@@ -82,7 +82,7 @@ const RegistrationForm = ({ user }) => {
           }),
         })
         if (!response.ok) {
-          if(response.status === 422) {
+          if (response.status === 422) {
             newErrors = {...newErrors, email: "email already in use"}
             setErrors(newErrors)
           }

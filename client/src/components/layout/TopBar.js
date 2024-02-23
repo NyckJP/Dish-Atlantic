@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 import { Menu } from "@headlessui/react"
-import SignOutButton from "../authentication/SignOutButton";
+import SignOutButton from "../authentication/SignOutButton"
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
@@ -13,7 +13,7 @@ const TopBar = ({ user }) => {
         Sign Up
       </Link>
     </li>,
-  ];
+  ]
 
   const authenticatedListItems = [
     <li key="username" className="username">
@@ -22,7 +22,7 @@ const TopBar = ({ user }) => {
     <li key="sign-out">
       <SignOutButton />
     </li>
-  ];
+  ]
 
   const menuItems = (
     <Menu.Items className="menu-list">
@@ -58,7 +58,7 @@ const TopBar = ({ user }) => {
         <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TopBar;
+export default TopBar
