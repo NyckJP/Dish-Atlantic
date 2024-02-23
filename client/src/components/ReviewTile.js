@@ -107,9 +107,9 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
 
     let helpfulVoteButton
     let controls
-    if (user){
+    if (user) {
         helpfulVoteButton = <p><i className="fa-solid fa-handshake-angle clickable" onClick={handleHelpfulVote} /> {helpfulVoteCount} people found this helpful</p>
-        if (user.id === userId){
+        if (user.id === userId) {
             controls = (
                 <div className="button-group">
                     <input className="button" type="button" value="Delete" onClick={handleDelete} />
@@ -122,7 +122,7 @@ const ReviewTile = ({ id, topic, recommended, content, helpfulVoteCount, deleteR
     }
 
     let editForm
-    if (shouldRenderEditForm){
+    if (shouldRenderEditForm) {
         editForm = (
             <>
                 <EditForm editReview={editReview} topic={topic} recommended={recommended} content={content} />

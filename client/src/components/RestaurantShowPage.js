@@ -37,7 +37,7 @@ const RestaurantShowPage = props => {
                 }),
                 body: JSON.stringify(payload)
             })
-            if (!response.ok){
+            if (!response.ok) {
                 throw new Error(`${response.status} (${response.statusText})`)
             }
             const parsedResponse = await response.json()
@@ -96,8 +96,8 @@ const RestaurantShowPage = props => {
     })
     
     let form
-    if (shouldRenderForm){
-        if (props.user){
+    if (shouldRenderForm) {
+        if (props.user) {
             form = <NewDishReviewForm postReview={postReview} />
         } else {
             form = (
