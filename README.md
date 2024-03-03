@@ -1,6 +1,11 @@
 # Dish Atlantic
 
-Want to find a new place to eat? Dish Atlantic gives you many different restaurants to scroll through and choose from!
+Want to find a new place to eat? Dish Atlantic gives you many different restaurants to scroll through and choose from! Find your next meal: [Dish Atlantic on Heroku](https://dishatlantic.herokuapp.com)
+
+Dish Atlantic will have a pre-existing account for you to try out all features:
+ - Email: newuser@email.com
+ - Password: 1234
+ - Seeded restaurants are favorited
 
 ## Dev Stack
 
@@ -33,6 +38,12 @@ Want to find a new place to eat? Dish Atlantic gives you many different restaura
 - Image upload functionality for profile pictures and dish reviews
 - Ability to add comments to existing reviews
 
+## Known Issues
+
+- Authentication redirects to homepage
+- Search bar on homepage may be awkward to use on mobile devices
+- Saved restaurants take a while to load and lack a loading icon
+
 ## Local Setup
 
 - Clone the repository
@@ -43,6 +54,5 @@ Want to find a new place to eat? Dish Atlantic gives you many different restaura
 3. `cd server`
 4. `yarn migrate:latest`
 5. `yarn db:seed`
-6. `cd ..`
-7. `yarn run dev`
+6. `yarn dev`
 - Visit `localhost:3000` in your browser
