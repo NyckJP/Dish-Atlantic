@@ -1,11 +1,16 @@
 import React, { useState } from "react"
 import config from "../../config"
+import { Redirect } from "react-router-dom"
 import FormError from "../layout/FormError"
 
-const SignInForm = () => {
+const SignInForm = ({ user }) => {
   const [userPayload, setUserPayload] = useState({ email: "", password: "" })
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [errors, setErrors] = useState({})
+
+  if (user) {
+    return <Redirect push to= "/saved" />
+  }
 
   const validateInput = (payload) => {
     setErrors({})
