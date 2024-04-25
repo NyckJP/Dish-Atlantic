@@ -1,6 +1,6 @@
 # Dish Atlantic
 
-Want to find a new place to eat? Dish Atlantic gives you many different restaurants to scroll through and choose from! Find your next meal: [Dish Atlantic on Heroku](https://dishatlantic.herokuapp.com)
+Want to find a new place to eat? Dish Atlantic gives you many different restaurants to scroll through and choose from! Find your next meal: [Dish Atlantic on Heroku](https://www.dishatlantic.com)
 
 Dish Atlantic will have a pre-existing account for you to try out all features:
  - Email: newuser@email.com
@@ -41,8 +41,8 @@ Dish Atlantic will have a pre-existing account for you to try out all features:
 ## Known Issues
 
 - Authentication redirects to homepage
-- Search bar on homepage may be awkward to use on mobile devices
-- Saved restaurants take a while to load and lack a loading icon
+- Mobile view is awkward
+- Saved restaurants take a while to appear and lacks a loading icon
 
 ## Local Setup
 
