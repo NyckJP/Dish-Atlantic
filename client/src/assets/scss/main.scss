@@ -343,7 +343,8 @@ a {
     font-size: 2rem;
   }
   p {
-    width: 27rem;
+    margin-inline: 1rem;
+    max-width: 27rem;
   }
 }
 
