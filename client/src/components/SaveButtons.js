@@ -60,7 +60,7 @@ const SaveButtons = ({ restaurantId, setShouldRedirect, user }) => {
         favoriteButton = <div className="save-buttons" onClick={handleFavoriteClick}><i className="fa-regular fa-star" /> <p>Favorite</p></div>
     }
     if (savedForLater) {
-        tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/><p>Saved for Later</p></div>
+        tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> <p>Saved for Later</p></div>
     } else {
         tryLaterButton = <div className="save-buttons" onClick={handleTryLaterClick}><i className="fa-regular fa-clock" /> <p>Try Later</p></div>
     }

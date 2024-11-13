@@ -18,6 +18,10 @@ ul {
   margin-left: 0;
 }
 
+.grid-container {
+  padding: 0;
+}
+
 .top-bar {
   background-image: linear-gradient(#38aecc, #edf7f5);
   font-style: italic;
@@ -204,7 +208,7 @@ a {
   justify-content: space-between;
   div, a{
     line-height: 50px;
-    font-size: 1rem;
+    font-size: .8rem;
     padding-left: 1rem;
     padding-right: 1rem;
     color: black;
@@ -410,7 +414,8 @@ a {
   
   .restaurant-tile {
     height: auto;
-    margin-right: 0rem;
+    margin-right: .625rem;
+    margin-left: .625rem;
   }
 
   .tile-content {
