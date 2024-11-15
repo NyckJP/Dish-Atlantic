@@ -57,7 +57,7 @@ ul {
 .button {
   background-color: #00a6fb;
   border-radius: 20px;
-  padding: 1em 6.5em;
+  padding: 1em 6em;
 }
 
 .form-container {
@@ -374,7 +374,7 @@ a {
 
 @media (max-width: 886px) {
   .form-container {
-    width: 27rem;
+    max-width: 90%;
   }
 
   .menu-button {
@@ -406,7 +406,7 @@ a {
       margin: 0rem 3rem 1rem;
     }
     button {
-      padding: 1em 6em;
+      padding: 1em 3em;
     }
   }
   

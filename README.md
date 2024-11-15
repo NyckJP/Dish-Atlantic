@@ -1,6 +1,6 @@
 # Dish Atlantic
 
-Want to find a new place to eat? Dish Atlantic gives you many different restaurants to scroll through and choose from! Find your next meal: [Dish Atlantic on Heroku](https://www.dishatlantic.com)
+Want to find a new place to eat? Dish Atlantic gives you many different restaurants to scroll through and choose from! Find your next meal: [Dish Atlantic hosted by Heroku](http://www.dishatlantic.com)
 
 Dish Atlantic will have a pre-existing account for you to try out all features:
  - Email: newuser@email.com
