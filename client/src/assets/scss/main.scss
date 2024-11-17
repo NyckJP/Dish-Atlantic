@@ -213,12 +213,6 @@ a {
     padding-right: 1rem;
     color: black;
   }
-  .save-buttons:hover {
-    background-color: #00a6fb;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-  }
   a:hover{
     color: #00a6fb;
   }
@@ -233,10 +227,18 @@ a {
   border-radius: 20px;
 }
 
-.clickable:hover {
-  background-color: #00a6fb;
-  color: white;
-  cursor: pointer;
+@media (min-width: 769px){
+  .save-buttons:hover {
+    background-color: #00a6fb;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .clickable:hover {
+    background-color: #00a6fb;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .authentication-links {
@@ -503,9 +505,9 @@ a {
   }
 }
 
-@media (max-width: 403px) {
+@media (max-width: 469px) {
   .username {
-    font-size: .9rem;
+    font-size: .64rem;
   }
 }
 @media (max-width: 392px) {
