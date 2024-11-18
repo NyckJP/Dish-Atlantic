@@ -14,6 +14,14 @@
   tab-size: 4;
 }
 
+ul {
+  margin-left: 0;
+}
+
+.grid-container {
+  padding: 0;
+}
+
 .top-bar {
   background-image: linear-gradient(#38aecc, #edf7f5);
   font-style: italic;
@@ -49,7 +57,7 @@
 .button {
   background-color: #00a6fb;
   border-radius: 20px;
-  padding: 1em 6.5em;
+  padding: 1em 6em;
 }
 
 .form-container {
@@ -126,7 +134,8 @@ a {
   background-color: #a1e2f3;
   margin: 3rem 1rem 2.5rem;
   border-color: #00a6fb;
-  width: 40rem;
+  width: 50%;
+  min-width: 18rem;
   border-radius: 1.25rem;
   text-align: center;
 }
@@ -157,10 +166,10 @@ a {
 }
 
 .restaurant-tile {
+  max-width: 100%;
   background-color: #a1e2f3;
   border-color: #00a6fb;
   border-radius: 20px;
-  width: 45rem;
   height: 300px;
   padding: 0px;
   transition: box-shadow .3s;
@@ -180,15 +189,15 @@ a {
   width: 250px;
   height: 100%;
   border-radius: 20px;
-  margin-right: 2rem;
+  margin-right: .5rem;
 }
 
 .restaurant-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 35px;
-  width: 30rem;
+  width: 60%;
+  font-size: 2rem;
   padding-left: .5rem;
   padding-right: .5rem;
 }
@@ -199,19 +208,16 @@ a {
   justify-content: space-between;
   div, a{
     line-height: 50px;
-    font-size: 1rem;
+    font-size: .8rem;
     padding-left: 1rem;
     padding-right: 1rem;
     color: black;
   }
-  .save-buttons:hover {
-    background-color: #00a6fb;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-  }
   a:hover{
     color: #00a6fb;
+  }
+  p{
+    display: inline;
   }
 }
 
@@ -221,10 +227,18 @@ a {
   border-radius: 20px;
 }
 
-.clickable:hover {
-  background-color: #00a6fb;
-  color: white;
-  cursor: pointer;
+@media (min-width: 769px){
+  .save-buttons:hover {
+    background-color: #00a6fb;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .clickable:hover {
+    background-color: #00a6fb;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .authentication-links {
@@ -258,8 +272,6 @@ a {
 
 .restaurant-image {
   border-radius: 2rem;
-  width: auto;
-  min-width: 20rem;
   height: 20rem;
   margin-bottom: .5rem;
 }
@@ -288,7 +300,7 @@ a {
   background-color: #a1e2f3;
   border-color: #00a6fb;
   border-radius: 20px;
-  width: 30rem;
+  max-width: 35rem;
   p, h3, h5 {
     margin-bottom: 0rem;
   }
@@ -335,7 +347,8 @@ a {
     font-size: 2rem;
   }
   p {
-    width: 27rem;
+    margin-inline: 1rem;
+    max-width: 27rem;
   }
 }
 
@@ -363,7 +376,7 @@ a {
 
 @media (max-width: 886px) {
   .form-container {
-    width: 27rem;
+    max-width: 90%;
   }
 
   .menu-button {
@@ -386,10 +399,6 @@ a {
     }
   }
   
-  .search-city-container {
-    width: 28rem;
-  }
-
   .log-in-options {
     h3 {
       font-size: 2rem;
@@ -399,31 +408,31 @@ a {
       margin: 0rem 3rem 1rem;
     }
     button {
-      padding: 1em 6em;
+      padding: 1em 3em;
     }
   }
   
   .restaurant-tile {
-    width: 27rem;
     height: auto;
-    margin-right: 0rem;
+    margin-right: .625rem;
+    margin-left: .625rem;
   }
 
   .tile-content {
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
   }
 
   .tile-image {
     width: 100%;
-    height: auto;
     margin-right: 0rem;
   }
 
   .restaurant-info {
+    width: 100%;
     align-items: center;
     text-align: center;
-    width: 27rem;
   }
   
   .restaurant-name {
@@ -431,11 +440,16 @@ a {
   }
 
   .save-options {
+    div {
+      font-size: .7rem;
+    }
     margin-right: 0rem;
     margin-bottom: .5rem;
   }
 
   .show-page {
+    margin-left: 1rem;
+    margin-right: 1rem;
     h1 {
       font-size: 2.5rem;
     }
@@ -448,8 +462,12 @@ a {
     flex-direction: column;
   }
 
+  .banner-left-side {
+    margin-left: .625rem;
+    margin-right: .625rem;
+  }
+
   .restaurant-image {
-    width: 27rem;
     height: auto;
   }
 
@@ -476,5 +494,24 @@ a {
 
   .saved-lists {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 375px) {
+  .save-buttons {
+    p {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 469px) {
+  .username {
+    font-size: .64rem;
+  }
+}
+@media (max-width: 392px) {
+  .username {
+    display: none;
   }
 }

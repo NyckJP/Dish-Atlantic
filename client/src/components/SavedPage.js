@@ -67,14 +67,14 @@ const SavedPage = ({ user }) => {
     
     return (
         <div className="saved-page page-height">
-            <h1 className="text-center list-title">Saved Restaurants</h1>
+            <h1 className="text-center restaurant-list-title">Saved Restaurants</h1>
             <div className="saved-lists">
                 <div className="half-saved-page">
-                    <h2><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</h2>
+                    <h1><i className="fa-solid fa-star" style={{color: "#ffd500",}}/> Favorited</h1>
                     {favoritesList}
                 </div>
                 <div className="half-saved-page">
-                    <h2><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved For Later</h2>
+                    <h1><i className="fa-solid fa-clock" style={{color: "#7a00cc",}}/> Saved For Later</h1>
                     {tryLatersList}
                 </div>
             </div>

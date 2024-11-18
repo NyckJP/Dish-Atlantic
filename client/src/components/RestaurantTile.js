@@ -26,7 +26,7 @@ const RestaurantTile = ({ name, location, image_url, id, user, setShouldRedirect
     return (
         <div className="callout restaurant-tile">
             <div className="tile-content">
-                <a href={`/restaurants/${id}`}>
+                 <a href={`/restaurants/${id}`} className="tile-image"> 
                     <img src={image_url} className="tile-image"/>
                 </a>
                 <div className="restaurant-info">
@@ -34,7 +34,7 @@ const RestaurantTile = ({ name, location, image_url, id, user, setShouldRedirect
                     <div>{location.display_address[0]}</div>
                     <div>{location.display_address[location.display_address.length - 1]}</div>
                     <div className="save-options">
-                        <SaveButtons restaurantId={id}  setShouldRedirect={setShouldRedirect} user={user}/>
+                        <SaveButtons restaurantId={id} setShouldRedirect={setShouldRedirect} user={user}/>
                         <a href={`/restaurants/${id}`}>
                             <i className="fa-solid fa-comment" style={{color: "#a8a8a8",}}/> {reviewCountMessage}
                         </a>
